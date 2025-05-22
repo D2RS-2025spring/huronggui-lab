@@ -177,10 +177,10 @@
 <nav>
   <ul>
     <li><a href="ktz.html" data-lang="zh">首页</a></li>
-    <li><a href="highlights.html" data-lang="zh">科研成果</a></li>
-    <li><a href="terms.html" data-lang="zh">成员</a></li>
-    <li><a href="news.html" data-lang="zh">学术活动</a></li>
-    <li><a href="resources.html" data-lang="zh">资源下载</a></li>
+    <li><a href="../terms.html" data-lang="zh">成员</a></li>
+    <li><a href="../research.html" data-lang="zh">科研成果</a></li>
+    <li><a href="../news.html" data-lang="zh">学术活动</a></li>
+    <li><a href="../resource/resources.html" data-lang="zh">资源下载</a></li>
   </ul>
   
   <!-- 将控制按钮移到导航栏内部下方 -->
@@ -198,11 +198,11 @@
   <!-- 新增的轮播图部分 -->
   <div class="carousel">
     <div class="carousel-track">
-      <img src="OPPO-PHM110的相册/最近照片/2025-05/Camera_XHS_17477443227581040g0083134pp6bo722g5nj9018g8lanlm6dba8.jpg" alt="课题组活动1">
-      <img src="OPPO-PHM110的相册/最近照片/2025-05/Camera_XHS_17477443252851040g0083134pp6bo72305nj9018g8lanauhnpc0.jpg" alt="课题组活动2">
-      <img src="OPPO-PHM110的相册/最近照片/2025-05/Camera_XHS_17477443359671040g00831as90potn26g5olmsqm6o1dahgql6o8.jpg" alt="课题组活动3">
-      <img src="OPPO-PHM110的相册/最近照片/2025-05/Image_761613756171079.jpg" alt="课题组活动4">
-      <img src="OPPO-PHM110的相册/最近照片/2025-05/Image_761689990495321.jpg" alt="课题组活动5">
+      <img src="Camera_XHS_17477443227581040g0083134pp6bo722g5nj9018g8lanlm6dba8.jpg" alt="课题组活动1">
+      <img src="Camera_XHS_17477443252851040g0083134pp6bo72305nj9018g8lanauhnpc0.jpg" alt="课题组活动2">
+      <img src="Camera_XHS_17477443359671040g00831as90potn26g5olmsqm6o1dahgql6o8.jpg" alt="课题组活动3">
+      <img src="Image_761613756171079.jpg" alt="课题组活动4">
+      <img src="2025-05/Image_761689990495321.jpg" alt="课题组活动5">
     </div>
   </div>
 
@@ -233,17 +233,70 @@
       <p data-lang="zh">最新动态内容...</p>
       <p data-lang="en" style="display:none;">Latest news content...</p>
     </section>
+
+    <!-- 新增的联系我们板块 -->
+    <section id="contact">
+      <h2 data-lang="zh">联系我们</h2>
+      <h2 data-lang="en" style="display:none;">Contact Us</h2>
+      <p data-lang="zh">
+        办公电话：027－87282152<br>
+        办公地址：中农业大学资源与环境学院东附楼<br>
+        电子邮件：<a href="mailto:rghu@mail.hzau.edu.cn">rghu@mail.hzau.edu.cn</a>
+      </p>
+      <div style="margin: 18px auto; position: relative; max-width: 800px; min-width: 320px; width: 90%; display: flex; justify-content: center;">
+        <!-- 静态地图图片及自定义标注 -->
+        <img src="map.png" alt="地图" style="width:100%; max-width:800px; border:1px solid #ccc; border-radius:10px; display:block;">
+        <!-- 标注符号 -->
+        <div id="map-marker" style="position:absolute; left:52%; top:62%; transform:translate(-50%,-100%); cursor:pointer; z-index:2;">
+          <svg width="32" height="32" viewBox="0 0 32 32">
+            <circle cx="16" cy="16" r="10" fill="#e74c3c" stroke="#fff" stroke-width="3"/>
+            <circle cx="16" cy="16" r="5" fill="#fff"/>
+          </svg>
+        </div>
+        <!-- 标注内容气泡 -->
+        <div id="marker-tooltip" style="display:none; position:absolute; left:52%; top:54%; transform:translate(-50%,-100%); background:rgba(255,255,255,0.85); border:1px solid #2e8b57; border-radius:8px; padding:10px 16px; color:#234d36; font-size:1em; box-shadow:0 2px 8px #0002; white-space:nowrap; z-index:3; transition:opacity 0.2s;">
+          湖北武汉市洪山区南湖大道66号<br>华中农业大学资源与环境学院
+        </div>
+      </div>
+      <script>
+        // 地图标注气泡交互，支持悬停和点击固定/取消
+        const marker = document.getElementById('map-marker');
+        const tooltip = document.getElementById('marker-tooltip');
+        let tooltipFixed = false;
+        marker.addEventListener('mouseenter', () => {
+          if (!tooltipFixed) tooltip.style.display = 'block';
+        });
+        marker.addEventListener('mouseleave', () => {
+          if (!tooltipFixed) tooltip.style.display = 'none';
+        });
+        marker.addEventListener('touchstart', () => {
+          if (!tooltipFixed) tooltip.style.display = 'block';
+        });
+        marker.addEventListener('touchend', () => {
+          if (!tooltipFixed) tooltip.style.display = 'none';
+        });
+        marker.addEventListener('click', () => {
+          tooltipFixed = !tooltipFixed;
+          tooltip.style.display = tooltipFixed ? 'block' : 'none';
+        });
+      </script>
+      <p data-lang="en" style="display:none;">
+        Office Phone: 027-87282152<br>
+        Office Address: East Annex, College of Resources and Environment, HZAU<br>
+        Email: <a href="mailto:rghu@mail.hzau.edu.cn">rghu@mail.hzau.edu.cn</a>
+      </p>
+    </section>
   </main>
 
   <footer>
     <p data-lang="zh">
       联系地址：华中农业大学资源与环境学院<br>
-      电 话：123456789<br>
+      电 话：13720163192<br>
       环境生态课题组 | Environmental Ecology Research Group
     </p>
     <p data-lang="en" style="display:none;">
       Address: College of Resources and Environment, Huazhong Agricultural University<br>
-      Phone: 123456789<br>
+      Phone: 13720163192<br>
       Environmental Ecology Research Group
     </p>
   </footer>
