@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>欢迎访问环境生态课题组！</title>
+  <link rel="stylesheet" href="ktz.css">
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      min-height: 100vh;
+      /* 设置背景图片 */
+      background: url('https://ts1.tc.mm.bing.net/th/id/R-C.be313742816ceb55eda547d9cedf3b5e?rik=R%2b3Q2sTJK8Uk3A&riu=http%3a%2f%2fimgs.focus.cn%2fupload%2fwh%2f37160%2fa_371595663.jpg&ehk=ubG%2fK%2bX1OVDP%2fnwsCxiRxrmK2Wj5eUdpftgpa7QZaJs%3d&risl=&pid=ImgRaw&r=0') no-repeat center center fixed;
+      background-size: cover;
+      position: relative;
+    }
+
+    /* 半透明遮罩层 */
+    .background-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(255,255,255,0.65);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    header {
+      background: linear-gradient(to right, rgba(210,234,221,0.85), rgba(168,213,186,0.85));
+      color: #316b4b74;
+      padding: 40px 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      position: relative;
+      border-radius: 18px;
+      margin: 24px 24px 0 24px;
+      font-family: 'Microsoft YaHei', 'Georgia', serif;
+      letter-spacing: 1px;
+    }
+
+    .header-container {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .header-container img {
+      margin-bottom: 20px;
+      filter: drop-shadow(0 2px 8px rgba(44, 62, 80, 0.18));
+    }
+
+    .title h1 {
+      font-size: 2.5em;
+      margin: 0;
+      font-family: '隶书', 'STLiti', serif;
+      color: #335544;
+      text-shadow: 0 2px 8px rgba(255, 255, 255, 0.016);
+      letter-spacing: 3px;
+    }
+
+    .title h2 {
+      font-size: 1.5em;
+      margin: 10px 0 0;
+      font-family: 'Georgia', serif;
+      color: #3b6c4c;
+      text-shadow: 0 1px 4px rgba(255,255,255,0.18);
+    }
+
+    nav {
+      background: rgba(46,139,87,0.85);
+      padding: 10px 0;
+      text-align: center;
+      border-radius: 0 0 16px 16px;
+      margin: 0 24px 0 24px;
+      box-shadow: 0 2px 8px rgba(44, 62, 80, 0.10);
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    nav ul li {
+      display: inline;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      font-size: 1.08em;
+      padding: 6px 18px;
+      border-radius: 8px;
+      transition: background 0.2s, color 0.2s;
+    }
+    nav ul li a:hover {
+      background: rgba(255,255,255,0.18);
+      color: #234d36;
+    }
+
+    .main-content {
+      display: flex;
+      flex: 1;
+      background: rgba(255,255,255,0.82);
+      border-radius: 18px;
+      margin: 24px;
+      box-shadow: 0 2px 12px rgba(44, 62, 80, 0.10);
+    }
+
+    .sidebar {
+      width: 200px;
+      background: rgba(244,244,244,0.82);
+      padding: 20px;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.08);
+      border-radius: 14px;
+      font-family: 'Microsoft YaHei', 'Arial', sans-serif;
+      font-size: 1.08em;
+      color: #e1ebe5;
+      margin-right: 12px;
+    }
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sidebar ul li {
+      margin: 10px 0;
+    }
+
+    .sidebar ul li a {
+      text-decoration: none;
+      color: #2e8b57;
+      font-weight: bold;
+      transition: color 0.2s;
+    }
+    .sidebar ul li a:hover {
+      color: #cfdcd5;
+      text-decoration: underline;
+    }
+
+    .content {
+      flex: 1;
+      padding: 20px 32px 20px 0;
+      font-family: 'Microsoft YaHei', 'Arial', sans-serif;
+      font-size: 1.08em;
+      color: #dce5e0;
+    }
+    .content h3 {
+      color: #2e8b57;
+      font-family: 'Microsoft YaHei', 'Georgia', serif;
+      font-size: 1.25em;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+      text-shadow: 0 1px 4px rgba(255,255,255,0.18);
+    }
+    .content ul li, .content li {
+      line-height: 2;
+      margin-bottom: 2px;
+      color: #214833;
+      font-size: 1em;
+    }
+
+    .journals {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-start;
+      height: auto;
+      min-height: 0;
+      background: rgba(255,255,255,0.82);
+      border-radius: 12px;
+      padding: 16px 0;
+      box-shadow: 0 2px 8px rgba(184, 210, 234, 0.842);
+    }
+    .journals a {
+      display: inline-block;
+      width: 200px;
+      height: auto;
+      overflow: visible;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+      background: rgba(255,255,255,0.92);
+      vertical-align: top;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .journals a:hover {
+      box-shadow: 0 4px 16px rgba(44, 62, 80, 0.18);
+      transform: translateY(-2px) scale(1.03);
+    }
+    .journals img {
+      width: 100%;
+      height: auto !important;
+      aspect-ratio: unset;
+      object-fit: contain;
+      display: block;
+      background: #f8f8f8;
+      margin: 0 auto;
+      max-height: 200px;
+      border-radius: 8px;
+      box-shadow: 0 1px 4px rgba(44, 62, 80, 0.10);
+    }
+
+    footer {
+      background: rgba(46,139,87,0.85);
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+      margin-top: auto;
+      border-radius: 0 0 16px 16px;
+      margin: 0 24px 24px 24px;
+      font-family: 'Microsoft YaHei', 'Georgia', serif;
+      font-size: 1.08em;
+      letter-spacing: 1px;
+      box-shadow: 0 2px 8px rgba(44, 62, 80, 0.10);
+    }
+
+    /* 主体内容层级提升，确保在遮罩层之上 */
+    header, nav, .main-content, footer {
+      position: relative;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+    <div class="background-overlay"></div>
+  <header>
+    <div class="header-container" style="display: flex; flex-direction: column; align-items: center;">
+      <!-- 校徽 -->
+      <img src="pic/xh.png" alt="校徽" style="width: 180px; height: auto; margin-bottom: px;">
+      <!-- 标题 -->
+      <div class="title" style="text-align: center;">
+        <h1 style="font-family: '隶书', serif; font-size: 2.8em; margin: 0; letter-spacing: 2px;">欢迎访问环境生态课题组！</h1>
+        <h2 style="font-family: 'Georgia', serif; font-size: 1.6em; margin: 10px 0 0; font-weight: normal;">Welcome to the Environmental Ecology Research Group!</h2>
+      </div>
+    </div>
+  </header>
+  <!-- 
+
+  <!-- 导航栏 -->
+  <nav>
+    <ul>
+      <li><a href="../public/ktz.html" data-lang="zh">首页</a></li>
+      <li><a href="../terms.html" data-lang="zh">成员</a></li>
+      <li><a href="../research.html" data-lang="zh">科研成果</a></li>
+      <li><a href="../news.html" data-lang="zh">学术活动</a></li>
+      <li><a href="resources.html" data-lang="zh">资源下载</a></li>
+    </ul>
+  </nav>
+  <div class="transparent-bar"></div>
+  <div class="main-content">
+    <div class="sidebar">
+      <ul>
+        <li><a href="#recommendations">公众号推荐</a></li>
+        <li><a href="#websites">科研网站</a></li>
+        <li><a href="#software">常用软件</a></li>
+        <li><a href="#instruments">仪器及实验操作</a></li>
+        <li><a href="#journals">常用期刊</a></li>
+      </ul>
+    </div>
+    <div class="content">
+      <main>
+        <section style="margin-bottom: 32px;">
+          <h3 id="recommendations">公众号推荐</h3>
+          <ul style="line-height: 2;">
+            <li>土壤学报、土壤微生物组、中国环境、环境人environment、宏基因组、生化环材BCEMers、生态学文献分享、生态学家、生信宝典、南农LorMe、农环视界、农业环境科学、农作未来、BioArt植物、天然有机质研究情报、炭索未来、科研菌、水土保持与生态环境治理、顶刊收割机、寇享学术、精鼎统计、科研Z库、微科享、红皇后学术、科学网、知社学术圈、软件智库、管家小e、Figure图、Paper绘图、数据绘图、科研小助手、科研工具箱、学术前沿、学术桥、科研圈、学术资源库</li>
+          </ul>
+        </section>
+        <section style="margin-bottom: 32px;">
+          <h3 id="websites">科研网站</h3>
+          <ul style="line-height: 2;">
+            <li><a href="https://chat.deepseek.com/" target="_blank">Deepseek</a> - AI学术助手</li>
+            <li><a href="https://www.xueshu5.com/" target="_blank">谷歌学术</a> - 学术论文检索</li>
+            <li><a href="https://tool.yovisun.com/scihub/" target="_blank">SCI-Hub</a> - 论文下载</li>
+            <li><a href="https://kimi.moonshot.cn/" target="_blank">KiMi</a> - AI写作/翻译</li>
+            <li><a href="https://www.deepl.com/zh/translator/l/en/en" target="_blank">DEEPL</a> - 翻译工具</li>
+            <li><a href="https://www.x-mol.com/" target="_blank">X-MOL学术平台</a> - 学术社区</li>
+            <li><a href="https://www.cnki.net/" target="_blank">中国知网</a> - 中文论文检索</li>
+            <li><a href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank">PubMed</a> - 生物医学文献</li>
+            <li><a href="https://www.webofscience.com/" target="_blank">Web of Science</a> - 综合学术数据库</li>
+            <li><a href="https://www.researchgate.net/" target="_blank">ResearchGate</a> - 学术交流</li>
+          </ul>
+        </section>
+        <section style="margin-bottom: 32px;">
+          <h3 id="software">常用软件</h3>
+          <ul style="line-height: 2;">
+            <li>Origin、GraphPad Prism、R语言、SPSS、Visio、Endnote、ArcGIS、QGIS、Adobe Illustrator、Photoshop、Microsoft Office、Latex、Notion、Zotero、Mendeley、Python、MATLAB、Excel、PowerPoint、Word</li>
+          </ul>
+        </section>
+        <section style="margin-bottom: 32px;">
+          <h3 id="instruments">仪器及实验操作</h3>
+          <ul style="line-height: 2;">
+            <li><a href="ff.doc" download>实验室常用方法（Word文档下载）</a></li>
+            <li>TOC分析仪（总有机碳分析仪）</li>
+            <li>气相色谱仪（GC）</li>
+            <li>液相色谱仪（HPLC）</li>
+            <li>原子吸收分光光度计（AAS）</li>
+            <li>紫外-可见分光光度计（UV-Vis）</li>
+            <li>离心机、超净工作台、pH计、电子天平、干燥箱、培养箱等</li>
+          </ul>
+        </section>
+        <section>
+          <h3 id="journals">常用期刊</h3>
+          <div class="journals">
+            <!-- 前4个期刊已使用在线图片（保持不变） -->
+            <a href="https://www.tandfonline.com/journals/tssp20?src=pdf" target="图片"><img src="pic/1.png" alt="1"></a>
+            <a href="https://www.sciencedirect.com/journal/geoderma" target="_blank"><img src="pic/2.png" alt="2"></a>
+            <a href="https://www.sciencedirect.com/journal/agriculture-ecosystems-and-environment" target="_blank"><img src="pic/3.png" alt="3"></a>
+            <a href="https://www.sciencedirect.com/journal/atmospheric-environment"><img src="pic/4.png" alt="期刊4"></a>
+            <a href="https://www.sciencedirect.com/journal/atmospheric-environment" target="_blank"><img src="pic/5.png" alt="期刊5"></a>
+            <a href="https://www.sciencedirect.com/journal/journal-of-integrative-agriculture" target="_blank"><img src="pic/6.png" alt="期刊6"></a>
+            <a href="https://www.sciencedirect.com/journal/science-of-the-total-environment" target="_blank"><img src="pic/7.png" alt="期刊7"></a>
+            <a href="https://www.sciencedirect.com/journal/atmospheric-environment" target="_blank"><img src="pic/8.png" alt="期刊8"></a>
+            <a href="https://www.sciencedirect.com/journal/environmental-pollution" target="_blank"><img src="pic/9.png" alt="期刊9"></a>
+            <a href="https://www.sciencedirect.com/journal/journal-of-environmental-management" target="_blank"><img src="pic/10.png" alt="期刊10"></a>
+            <a href="https://www.sciencedirect.com/journal/soil-and-tillage-research" target="_blank"><img src="pic/11.png" alt="期刊11"></a>
+            <a href="https://www.sciencedirect.com/journal/soil-and-tillage-research" target="_blank"><img src="pic/12.png" alt="期刊12"></a>
+            <a href="https://www.sciencedirect.com/journal/environmental-research" target="_blank"><img src="pic/13.png" alt="期刊13"></a>
+            <a href="https://www.sciencedirect.com/journal/european-journal-of-agronomy" target="_blank"><img src="pic/14.png" alt="期刊14"></a>
+            <a href="https://link.springer.com/article/10.1007/s42773-022-00203-9" target="_blank"><img src="pic/15.png" alt="期刊15"></a>
+            <a href="https://www.hjkx.ac.cn/ch/index.aspx" target="_blank"><img src="pic/16.png" alt="期刊16"></a>
+            <a href="https://www.aes.org.cn/nyhjkxxb/ch/index.aspx" target="_blank"><img src="pic/17.png" alt="期刊17"></a>
+            <a href="http://www.ecologica.cn" target="_blank"><img src="pic/18.png" alt="期刊18"></a>
+            <a href="https://TRTB.cbpt.cnki.net" target="_blank"><img src="pic/19.png" alt="期刊19"></a>
+            <a href="http://www.tcsae.org" target="_blank"><img src="pic/20.png" alt="期刊20"></a>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+  <footer>
+    <p style="font-family: '隶书', serif; color: white;">
+      联系地址：华中农业大学资源与环境学院<br>
+      电 话：13720163192<br>
+      环境生态课题组 | Environmental Ecology Research Group
+    </p>
+    <p style="font-family: 'Georgia', serif; color: white; display: none;">
+      Address: College of Resources and Environment, Huazhong Agricultural University<br>
+      Phone: 13720163192<br>
+      Environmental Ecology Research Group
+    </p>
+  </footer>
+</body>
+</html>
