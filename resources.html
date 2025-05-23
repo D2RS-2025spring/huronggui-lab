@@ -18,6 +18,7 @@
       position: relative;
     }
 
+    /* 半透明遮罩层 */
     .background-overlay {
       position: fixed;
       top: 0;
@@ -29,18 +30,17 @@
       pointer-events: none;
     }
 
-    header, nav, .main-content, footer {
-      position: relative;
-      z-index: 1;
-    }
-
     header {
-      background: linear-gradient(to right, #2e8b57, #a8d5ba);
-      color: white;
+      background: linear-gradient(to right, rgba(210,234,221,0.85), rgba(168,213,186,0.85));
+      color: #316b4b74;
       padding: 40px 20px;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
       text-align: center;
       position: relative;
+      border-radius: 18px;
+      margin: 24px 24px 0 24px;
+      font-family: 'Microsoft YaHei', 'Georgia', serif;
+      letter-spacing: 1px;
     }
 
     .header-container {
@@ -50,36 +50,33 @@
 
     .header-container img {
       margin-bottom: 20px;
+      filter: drop-shadow(0 2px 8px rgba(44, 62, 80, 0.18));
     }
 
     .title h1 {
       font-size: 2.5em;
       margin: 0;
+      font-family: '隶书', 'STLiti', serif;
+      color: #335544;
+      text-shadow: 0 2px 8px rgba(255, 255, 255, 0.016);
+      letter-spacing: 3px;
     }
 
     .title h2 {
       font-size: 1.5em;
       margin: 10px 0 0;
-    }
-
-    .top-right {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      display: flex;
-      gap: 10px;
-    }
-
-    #search-bar {
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
+      font-family: 'Georgia', serif;
+      color: #3b6c4c;
+      text-shadow: 0 1px 4px rgba(255,255,255,0.18);
     }
 
     nav {
-      background-color: #2e8b57;
+      background: rgba(46,139,87,0.85);
       padding: 10px 0;
       text-align: center;
+      border-radius: 0 0 16px 16px;
+      margin: 0 24px 0 24px;
+      box-shadow: 0 2px 8px rgba(44, 62, 80, 0.10);
     }
 
     nav ul {
@@ -97,17 +94,38 @@
 
     nav ul li a {
       text-decoration: none;
-      color: white;
+      color: #fff;
       font-weight: bold;
+      font-size: 1.08em;
+      padding: 6px 18px;
+      border-radius: 8px;
+      transition: background 0.2s, color 0.2s;
+    }
+    nav ul li a:hover {
+      background: rgba(255,255,255,0.18);
+      color: #234d36;
+    }
+
+    .main-content {
+      display: flex;
+      flex: 1;
+      background: rgba(255,255,255,0.82);
+      border-radius: 18px;
+      margin: 24px;
+      box-shadow: 0 2px 12px rgba(44, 62, 80, 0.10);
     }
 
     .sidebar {
       width: 200px;
-      background-color: #f4f4f4;
+      background: rgba(244,244,244,0.82);
       padding: 20px;
-      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.08);
+      border-radius: 14px;
+      font-family: 'Microsoft YaHei', 'Arial', sans-serif;
+      font-size: 1.08em;
+      color: #e1ebe5;
+      margin-right: 12px;
     }
-
     .sidebar ul {
       list-style: none;
       padding: 0;
@@ -119,26 +137,35 @@
 
     .sidebar ul li a {
       text-decoration: none;
-      color: #333;
+      color: #2e8b57;
       font-weight: bold;
+      transition: color 0.2s;
+    }
+    .sidebar ul li a:hover {
+      color: #cfdcd5;
+      text-decoration: underline;
     }
 
     .content {
       flex: 1;
-      padding: 20px;
+      padding: 20px 32px 20px 0;
+      font-family: 'Microsoft YaHei', 'Arial', sans-serif;
+      font-size: 1.08em;
+      color: #dce5e0;
     }
-
-    .main-content {
-      display: flex;
-      flex: 1;
+    .content h3 {
+      color: #2e8b57;
+      font-family: 'Microsoft YaHei', 'Georgia', serif;
+      font-size: 1.25em;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+      text-shadow: 0 1px 4px rgba(255,255,255,0.18);
     }
-
-    footer {
-      background-color: #2e8b57;
-      color: white;
-      text-align: center;
-      padding: 10px;
-      margin-top: auto;
+    .content ul li, .content li {
+      line-height: 2;
+      margin-bottom: 2px;
+      color: #214833;
+      font-size: 1em;
     }
 
     .journals {
@@ -147,23 +174,28 @@
       flex-wrap: wrap;
       justify-content: center;
       align-items: flex-start;
-      /* 允许容器高度自适应内容 */
       height: auto;
       min-height: 0;
+      background: rgba(255,255,255,0.82);
+      border-radius: 12px;
+      padding: 16px 0;
+      box-shadow: 0 2px 8px rgba(184, 210, 234, 0.842);
     }
-
     .journals a {
       display: inline-block;
       width: 200px;
-      /* 让高度自适应图片 */
       height: auto;
       overflow: visible;
       border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      background: #fff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+      background: rgba(255,255,255,0.92);
       vertical-align: top;
+      transition: box-shadow 0.2s, transform 0.2s;
     }
-
+    .journals a:hover {
+      box-shadow: 0 4px 16px rgba(44, 62, 80, 0.18);
+      transform: translateY(-2px) scale(1.03);
+    }
     .journals img {
       width: 100%;
       height: auto !important;
@@ -172,8 +204,29 @@
       display: block;
       background: #f8f8f8;
       margin: 0 auto;
-      /* 让图片垂直居中 */
       max-height: 200px;
+      border-radius: 8px;
+      box-shadow: 0 1px 4px rgba(44, 62, 80, 0.10);
+    }
+
+    footer {
+      background: rgba(46,139,87,0.85);
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+      margin-top: auto;
+      border-radius: 0 0 16px 16px;
+      margin: 0 24px 24px 24px;
+      font-family: 'Microsoft YaHei', 'Georgia', serif;
+      font-size: 1.08em;
+      letter-spacing: 1px;
+      box-shadow: 0 2px 8px rgba(44, 62, 80, 0.10);
+    }
+
+    /* 主体内容层级提升，确保在遮罩层之上 */
+    header, nav, .main-content, footer {
+      position: relative;
+      z-index: 1;
     }
   </style>
 </head>
@@ -182,7 +235,7 @@
   <header>
     <div class="header-container" style="display: flex; flex-direction: column; align-items: center;">
       <!-- 校徽 -->
-      <img src="xh.png" alt="校徽" style="width: 120px; height: auto; margin-bottom: 10px;">
+      <img src="resource/pic/xh.png" alt="校徽" style="width: 180px; height: auto; margin-bottom: px;">
       <!-- 标题 -->
       <div class="title" style="text-align: center;">
         <h1 style="font-family: '隶书', serif; font-size: 2.8em; margin: 0; letter-spacing: 2px;">欢迎访问环境生态课题组！</h1>
@@ -190,30 +243,15 @@
       </div>
     </div>
   </header>
-  <!-- 反馈弹窗 -->
-  <div id="contact-modal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.4);z-index:1000;align-items:center;justify-content:center;">
-    <div style="background:#fff;padding:32px 24px;border-radius:12px;max-width:350px;width:90%;box-shadow:0 8px 32px #0002;position:relative;">
-      <h3 style="margin-top:0;" data-lang="zh">意见反馈</h3>
-      <h3 style="margin-top:0;display:none;" data-lang="en">Feedback</h3>
-      <textarea id="feedback-text" style="width:100%;height:80px;resize:none;border-radius:6px;border:1px solid #a8d5ba;padding:8px;"></textarea>
-      <div style="margin-top:12px;text-align:right;">
-        <button onclick="submitFeedback()" style="margin-right:8px;" data-lang="zh">提交</button>
-        <button onclick="submitFeedback()" style="margin-right:8px;display:none;" data-lang="en">Submit</button>
-        <button onclick="closeContactModal()" data-lang="zh">关闭</button>
-        <button onclick="closeContactModal()" style="display:none;" data-lang="en">Close</button>
-      </div>
-      <div id="feedback-success" style="color:green;display:none;margin-top:8px;" data-lang="zh">感谢您的反馈！</div>
-      <div id="feedback-success" style="color:green;display:none;margin-top:8px;" data-lang="en">Thank you for your feedback!</div>
-    </div>
-  </div>
+  <!-- 
 
   <!-- 导航栏 -->
   <nav>
     <ul>
       <li><a href="ktz.html" data-lang="zh">首页</a></li>
-      <li><a href="terms.html" data-lang="zh">成员</a></li>
-      <li><a href="research.html" data-lang="zh">科研成果</a></li>
-      <li><a href="news.html" data-lang="zh">学术活动</a></li>
+      <li><a href="../terms.html" data-lang="zh">成员</a></li>
+      <li><a href="../research.html" data-lang="zh">科研成果</a></li>
+      <li><a href="../news.html" data-lang="zh">学术活动</a></li>
       <li><a href="resources.html" data-lang="zh">资源下载</a></li>
     </ul>
   </nav>
@@ -273,26 +311,26 @@
           <h3 id="journals">常用期刊</h3>
           <div class="journals">
             <!-- 前4个期刊已使用在线图片（保持不变） -->
-            <a href="https://www.tandfonline.com/journals/tssp20?src=pdf" target="图片"><img src="pic/1.png" alt="1"></a>
-            <a href="https://www.sciencedirect.com/journal/geoderma" target="_blank"><img src="pic/2.png" alt="2"></a>
-            <a href="https://www.sciencedirect.com/journal/agriculture-ecosystems-and-environment" target="_blank"><img src="pic/3.png" alt="3"></a>
-            <a href="https://www.sciencedirect.com/journal/atmospheric-environment"><img src="pic/4.png" alt="期刊4"></a>
-            <a href="https://www.sciencedirect.com/journal/atmospheric-environment" target="_blank"><img src="pic/5.png" alt="期刊5"></a>
-            <a href="https://www.sciencedirect.com/journal/journal-of-integrative-agriculture" target="_blank"><img src="pic/6.png" alt="期刊6"></a>
-            <a href="https://www.sciencedirect.com/journal/science-of-the-total-environment" target="_blank"><img src="pic/7.png" alt="期刊7"></a>
-            <a href="https://www.sciencedirect.com/journal/atmospheric-environment" target="_blank"><img src="pic/8.png" alt="期刊8"></a>
-            <a href="https://www.sciencedirect.com/journal/environmental-pollution" target="_blank"><img src="pic/9.png" alt="期刊9"></a>
-            <a href="https://www.sciencedirect.com/journal/journal-of-environmental-management" target="_blank"><img src="pic/10.png" alt="期刊10"></a>
-            <a href="https://www.sciencedirect.com/journal/soil-and-tillage-research" target="_blank"><img src="pic/11.png" alt="期刊11"></a>
-            <a href="https://www.sciencedirect.com/journal/soil-and-tillage-research" target="_blank"><img src="pic/12.png" alt="期刊12"></a>
-            <a href="https://www.sciencedirect.com/journal/environmental-research" target="_blank"><img src="pic/13.png" alt="期刊13"></a>
-            <a href="https://www.sciencedirect.com/journal/european-journal-of-agronomy" target="_blank"><img src="pic/14.png" alt="期刊14"></a>
-            <a href="https://link.springer.com/article/10.1007/s42773-022-00203-9" target="_blank"><img src="pic/15.png" alt="期刊15"></a>
-            <a href="https://www.hjkx.ac.cn/ch/index.aspx" target="_blank"><img src="pic/16.png" alt="期刊16"></a>
-            <a href="https://www.aes.org.cn/nyhjkxxb/ch/index.aspx" target="_blank"><img src="pic/17.png" alt="期刊17"></a>
-            <a href="http://www.ecologica.cn" target="_blank"><img src="pic/18.png" alt="期刊18"></a>
-            <a href="https://TRTB.cbpt.cnki.net" target="_blank"><img src="pic/19.png" alt="期刊19"></a>
-            <a href="http://www.tcsae.org" target="_blank"><img src="pic/20.png" alt="期刊20"></a>
+            <a href="https://www.tandfonline.com/journals/tssp20?src=pdf" target="图片"><img src="resource/pic/1.png" alt="1"></a>
+            <a href="https://www.sciencedirect.com/journal/geoderma" target="_blank"><img src="resource/pic/2.png" alt="2"></a>
+            <a href="https://www.sciencedirect.com/journal/agriculture-ecosystems-and-environment" target="_blank"><img src="resource/pic/3.png" alt="3"></a>
+            <a href="https://www.sciencedirect.com/journal/atmospheric-environment"><img src="resource/pic/4.png" alt="期刊4"></a>
+            <a href="https://www.sciencedirect.com/journal/atmospheric-environment" target="_blank"><img src="resource/pic/5.png" alt="期刊5"></a>
+            <a href="https://www.sciencedirect.com/journal/journal-of-integrative-agriculture" target="_blank"><img src="resource/pic/6.png" alt="期刊6"></a>
+            <a href="https://www.sciencedirect.com/journal/science-of-the-total-environment" target="_blank"><img src="resource/pic/7.png" alt="期刊7"></a>
+            <a href="https://www.sciencedirect.com/journal/atmospheric-environment" target="_blank"><img src="resource/pic/8.png" alt="期刊8"></a>
+            <a href="https://www.sciencedirect.com/journal/environmental-pollution" target="_blank"><img src="resource/pic/9.png" alt="期刊9"></a>
+            <a href="https://www.sciencedirect.com/journal/journal-of-environmental-management" target="_blank"><img src="resource/pic/10.png" alt="期刊10"></a>
+            <a href="https://www.sciencedirect.com/journal/soil-and-tillage-research" target="_blank"><img src="resource/pic/11.png" alt="期刊11"></a>
+            <a href="https://www.sciencedirect.com/journal/soil-and-tillage-research" target="_blank"><img src="resource/pic/12.png" alt="期刊12"></a>
+            <a href="https://www.sciencedirect.com/journal/environmental-research" target="_blank"><img src="resource/pic/13.png" alt="期刊13"></a>
+            <a href="https://www.sciencedirect.com/journal/european-journal-of-agronomy" target="_blank"><img src="resource/pic/14.png" alt="期刊14"></a>
+            <a href="https://link.springer.com/article/10.1007/s42773-022-00203-9" target="_blank"><img src="resource/pic/15.png" alt="期刊15"></a>
+            <a href="https://www.hjkx.ac.cn/ch/index.aspx" target="_blank"><img src="resource/pic/16.png" alt="期刊16"></a>
+            <a href="https://www.aes.org.cn/nyhjkxxb/ch/index.aspx" target="_blank"><img src="resource/pic/17.png" alt="期刊17"></a>
+            <a href="http://www.ecologica.cn" target="_blank"><img src="resource/pic/18.png" alt="期刊18"></a>
+            <a href="https://TRTB.cbpt.cnki.net" target="_blank"><img src="resource/pic/19.png" alt="期刊19"></a>
+            <a href="http://www.tcsae.org" target="_blank"><img src="resource/pic/20.png" alt="期刊20"></a>
           </div>
         </section>
       </main>
