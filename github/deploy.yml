@@ -1,0 +1,10 @@
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate HTML
+        run: echo "<h1>Hello World</h1>" > index.html
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./  # 包含生成的 index.html
