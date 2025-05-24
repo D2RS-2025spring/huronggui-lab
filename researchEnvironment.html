@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>胡荣桂教授课题组</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#165DFF',
+                        secondary: '#36CFC9',
+                        accent: '#FF7D00',
+                        neutral: {
+                            100: '#F5F7FA',
+                            200: '#E4E7ED',
+                            300: '#DCDFE6',
+                            400: '#C0C4CC',
+                            500: '#909399',
+                            600: '#606266',
+                            700: '#303133',
+                            800: '#1E1E1E',
+                        }
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+          display: flex;
+          flex-direction: column;
+          margin: 0;
+          font-family: Arial, sans-serif;
+          min-height: 100vh;
+        }
+    
+        header {
+          background: linear-gradient(to right, #2e8b57, #a8d5ba);
+          color: white;
+          padding: 40px 20px;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+          text-align: center;
+          position: relative;
+        }
+    
+        .header-container {
+          flex-direction: column;
+          align-items: center;
+        }
+    
+        .header-container img {
+          margin-bottom: 20px;
+        }
+    
+        .title h1 {
+          font-size: 2.5em;
+          margin: 0;
+        }
+    
+        .title h2 {
+          font-size: 1.5em;
+          margin: 10px 0 0;
+        }
+    
+        .top-right {
+          position: absolute;
+          top: 20px;
+          right: 20px;
+          display: flex;
+          gap: 10px;
+        }
+    
+        #search-bar {
+          padding: 10px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+        }
+    
+        nav {
+          background-color: #2e8b57;
+          padding: 10px 0;
+          text-align: center;
+        }
+    
+        nav ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          display: flex;
+          justify-content: center;
+          gap: 20px;
+        }
+    
+        nav ul li {
+          display: inline;
+        }
+    
+        nav ul li a {
+          text-decoration: none;
+          color: white;
+          font-weight: bold;
+        }
+    
+        .sidebar {
+          width: 200px;
+          background-color: #f4f4f4;
+          padding: 20px;
+          box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+    
+        .sidebar ul {
+          list-style: none;
+          padding: 0;
+        }
+    
+        .sidebar ul li {
+          margin: 10px 0;
+        }
+    
+        .sidebar ul li a {
+          text-decoration: none;
+          color: #333;
+          font-weight: bold;
+        }
+    
+        .content {
+          flex: 1;
+          padding: 20px;
+        }
+    
+        .main-content {
+          display: flex;
+          flex: 1;
+        }
+    
+        footer {
+          background-color: #2e8b57;
+          color: white;
+          text-align: center;
+          padding: 10px;
+          margin-top: auto;
+        }
+    
+        .journals {
+          display: flex;
+          gap: 10px;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+    
+        .journals a {
+          display: inline-block;
+          width: 200px;
+          height: 200px;
+          overflow: hidden;
+          border-radius: 10px;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+    
+        .journals img {
+          width: 100%;
+          height: auto;
+          aspect-ratio: 16 / 9;
+          object-fit: cover;
+        }
+
+        .environment {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+          }
+      
+          .environment a {
+            display: inline-block;
+            width: 500px;
+            height: 500px;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+          }
+      
+          .environment img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+          }
+
+          
+      </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="bg-white shadow-md sticky top-0 z-50 transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white mr-3">
+                        <i class="fa fa-leaf text-xl"></i>
+                    </div>
+                    <span style="font-family: '隶书', serif; font-size: 2.5em; margin: 0;">胡荣桂教授课题组</span>
+                </div>
+                
+                <!-- 桌面导航 -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-neutral-700 hover:text-primary font-medium transition-colors">首页</a>
+                    <a href="teamMembers.html" class="text-neutral-700 hover:text-primary font-medium transition-colors">团队成员</a>
+                    <a href="achievements.html" class="text-neutral-700 hover:text-primary font-medium transition-colors">科研成果</a>
+                    <a href="resources.html" class="text-neutral-700 hover:text-primary font-medium transition-colors">资源下载</a>
+                    <a href="researchEnvironment.html" class="text-neutral-700 hover:text-primary font-medium transition-colors">科研环境</a>
+                    <a href="activity.html" class="text-neutral-700 hover:text-primary font-medium transition-colors">组内活动</a>
+                    <a href="#contact" class="text-neutral-700 hover:text-primary font-medium transition-colors">联系我们</a>
+                </div>
+                
+                <!-- 移动端菜单按钮 -->
+                <button id="menu-toggle" class="md:hidden text-neutral-700 focus:outline-none">
+                    <i class="fa fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- 移动端菜单 -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="container mx-auto px-4 py-3 space-y-3">
+                <a href="#home" class="block text-neutral-700 hover:text-primary font-medium transition-colors">首页</a>
+                <a href="teamMembers.html" class="block text-neutral-700 hover:text-primary font-medium transition-colors">团队成员</a>
+                <a href="#research" class="block text-neutral-700 hover:text-primary font-medium transition-colors">研究方向</a>
+                <a href="#publications" class="block text-neutral-700 hover:text-primary font-medium transition-colors">科研成果</a>
+                <a href="resources.html" class="block text-neutral-700 hover:text-primary font-medium transition-colors">资源下载</a>
+                <a href="researchEnviroment.html" class="block text-neutral-700 hover:text-primary font-medium transition-colors">科研环境</a>
+                <a href="#contact" class="block text-neutral-700 hover:text-primary font-medium transition-colors">联系我们</a>
+            </div>
+        </div>
+    </nav>
+    <h3 id="environment" style="font-family: '隶书', serif; font-size: 2.5em; margin: 0;" align="center">课题组环境照片</h3>
+        <div class="environment">
+          <a href="images\课题组环境照片\气相色谱仪.jpg" target="_blank"><img src="images\课题组环境照片\气相色谱仪.jpg" alt="气相色谱仪志">气相色谱仪</a>
+          <a href="images\课题组环境照片\液相色谱仪.jpg" target="_blank"><img src="images\课题组环境照片\液相色谱仪.jpg" alt="液相色谱仪">液相色谱仪</a>
+          <a href="images\课题组环境照片\总有机碳分析仪.jpg" target="_blank"><img src="images\课题组环境照片\总有机碳分析仪.jpg" alt="总有机碳分析仪">总有机碳分析仪</a>
+          <a href="images\课题组环境照片\实验室212.jpg" target="_blank"><img src="images\课题组环境照片\实验室212.jpg" alt="实验室212">实验室212</a>
+          <a href="images\课题组环境照片\实验室214.jpg" target="_blank"><img src="images\课题组环境照片\实验室214.jpg" alt="实验室214">实验室214</a>
+          <a href="images\课题组环境照片\往届荣誉.jpg" target="_blank"><img src="images\课题组环境照片\往届荣誉.jpg" alt="往届荣誉">往届荣誉</a>
+      
+        </div>
+</body>
+</html>
