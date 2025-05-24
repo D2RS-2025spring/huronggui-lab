@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>胡荣桂教授课题组</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#165DFF',
+                        secondary: '#36CFC9',
+                        accent: '#FF7D00',
+                        neutral: {
+                            100: '#F5F7FA',
+                            200: '#E4E7ED',
+                            300: '#DCDFE6',
+                            400: '#C0C4CC',
+                            500: '#909399',
+                            600: '#606266',
+                            700: '#303133',
+                            800: '#1E1E1E',
+                        }
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            background: linear-gradient(135deg, #e9f5ee 0%, #f7fff7 100%);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        .top-banner {
+            width: 100vw;
+            position: relative;
+            z-index: 200;
+            background: linear-gradient(90deg, #40916c 0%, #36cfc9 100%);
+            color: #fff;
+            text-align: center;
+            font-size: 1.25em;
+            font-weight: bold;
+            letter-spacing: 1px;
+            padding: 20px 0 16px 0;
+            box-shadow: 0 4px 24px rgba(64,145,108,0.13);
+            border-bottom-left-radius: 18px;
+            border-bottom-right-radius: 18px;
+        }
+        .nav {
+            position: fixed;
+            top: 170px;
+            left: 32px;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            background: rgba(233,245,238,0.95);
+            border-radius: 16px;
+            box-shadow: 0 2px 16px rgba(64,145,108,0.10);
+            padding: 18px 10px;
+            transition: background 0.3s;
+        }
+        .nav-btn {
+            background: linear-gradient(90deg, #e9f5ee 60%, #d8f3dc 100%);
+            color: #1b4332;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 22px;
+            font-size: 1.08em;
+            cursor: pointer;
+            font-weight: 500;
+            box-shadow: 0 1px 6px #e9f5ee;
+            transition: background 0.22s, color 0.22s, transform 0.18s;
+        }
+        .nav-btn.active, .nav-btn:hover {
+            background: linear-gradient(90deg, #36cfc9 0%, #40916c 100%);
+            color: #fff;
+            transform: scale(1.07);
+            box-shadow: 0 4px 16px #b7e4c7;
+        }
+        .scroll-container {
+            height: auto;
+            overflow-y: visible;
+            scroll-snap-type: none;
+            padding-top: 32px;
+        }
+        .member-section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            scroll-snap-align: center;
+            position: relative;
+            transition: opacity 0.5s;
+        }
+        .member-main {
+            width: 75vw;
+            max-width: 900px;
+            min-width: 320px;
+            height: 60vh;
+            background: linear-gradient(120deg, #e9f5ee 0%, #f7fff7 100%);
+            border-radius: 36px;
+            box-shadow: 0 16px 48px rgba(64,145,108,0.20), 0 6px 20px rgba(0,0,0,0.10);
+            padding: 56px 56px 56px 48px;
+            display: flex;
+            align-items: flex-start;
+            opacity: 1;
+            z-index: 2;
+            position: relative;
+            transition: box-shadow 0.3s, background 0.3s, transform 0.25s;
+            overflow: hidden;
+        }
+        .member-main:hover {
+            box-shadow: 0 24px 64px rgba(64,145,108,0.25), 0 12px 32px rgba(0,0,0,0.13);
+            background: linear-gradient(120deg, #d8f3dc 0%, #f7fff7 100%);
+            transform: translateY(-6px) scale(1.012);
+        }
+        .member-fade {
+            width: 75vw;
+            max-width: 900px;
+            min-width: 320px;
+            height: 60vh;
+            background: rgba(255,255,255,0.85);
+            border-radius: 36px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            padding: 56px 56px 56px 48px;
+            display: flex;
+            align-items: flex-start;
+            opacity: 0.13;
+            z-index: 1;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            pointer-events: none;
+        }
+        .avatar {
+            width: 130px;
+            height: 170px;
+            border-radius: 20px;
+            object-fit: cover;
+            object-position: center center;
+            margin-right: 44px;
+            border: 4px solid #b7e4c7;
+            background: #fff;
+            box-shadow: 0 4px 18px rgba(64,145,108,0.13);
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+            outline: 0px solid #36cfc9;
+        }
+        .member-main .avatar:hover {
+            transform: scale(1.09) translateY(-6px);
+            box-shadow: 0 10px 32px rgba(64,145,108,0.22);
+            border-color: #36cfc9;
+            outline: 3px solid #36cfc9;
+        }
+        .info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 100%;
+            max-height: 100%;
+            overflow: hidden;
+        }
+        .info-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            gap: 12px;
+        }
+        .name {
+            font-weight: bold;
+            color: #1b4332;
+            font-size: 1.5em;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 8px #e9f5ee;
+            transition: color 0.2s;
+            line-height: 1.2;
+        }
+        .name:hover {
+            color: #36cfc9;
+            text-decoration: underline wavy #36cfc9 2px;
+        }
+        .title {
+            margin-left: 18px;
+            color: #40916c;
+            font-size: 1em;
+            font-weight: normal;
+            background: #e9f5ee;
+            border-radius: 10px;
+            padding: 3px 16px;
+            box-shadow: 0 1px 4px #e9f5ee;
+            line-height: 1.2;
+        }
+        .subinfo, .intro {
+            margin-top: 12px;
+            color: #495057;
+            font-size: 0.98em;
+            line-height: 1.7;
+            background: rgba(233,245,238,0.6);
+            border-radius: 10px;
+            padding: 10px 18px 10px 0;
+            box-shadow: 0 1px 4px #e9f5ee;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            word-break: break-all;
+            overflow-y: auto;
+            text-overflow: ellipsis;
+            max-height: 7.5em;
+            min-height: 2.2em;
+        }
+        .subinfo::-webkit-scrollbar, .intro::-webkit-scrollbar {
+            width: 6px;
+            background: #e9f5ee;
+            border-radius: 6px;
+        }
+        .subinfo::-webkit-scrollbar-thumb, .intro::-webkit-scrollbar-thumb {
+            background: #b7e4c7;
+            border-radius: 6px;
+        }
+        @media (max-width: 1000px) {
+            .member-main, .member-fade {
+                width: 98vw;
+                padding: 18px 2vw;
+                height: 60vh;
+                min-height: 180px;
+                max-height: 60vh;
+            }
+            .avatar {
+                width: 90px;
+                height: 120px;
+                margin-right: 16px;
+            }
+            .nav {
+                left: 4px;
+                padding: 10px 2px;
+            }
+            .name {
+                font-size: 1.1em;
+            }
+            .subinfo, .intro {
+                font-size: 0.92em;
+                max-height: 6.5em;
+                gap: 6px;
+            }
+            .info-row {
+                gap: 8px;
+            }
+        }
+        @media (max-width: 800px) {
+            .member-main, .member-fade {
+                width: 99vw;
+                padding: 12px 1vw;
+            }
+            .avatar {
+                width: 80px;
+                height: 100px;
+                margin-right: 12px;
+            }
+            .nav {
+                top: 120px;
+                gap: 8px;
+            }
+        }
+        @media (max-width: 600px) {
+            .member-main, .member-fade {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 8vw 2vw;
+                height: auto;
+                min-height: 120px;
+                max-height: 80vw;
+            }
+            .avatar {
+                margin: 0 0 18px 0;
+            }
+            .info-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 6px;
+            }
+            .name {
+                font-size: 1em;
+            }
+            .title {
+                font-size: 1em;
+                margin-left: 0;
+                margin-top: 6px;
+            }
+            .subinfo, .intro {
+                font-size: 0.88em;
+                max-height: 8em;
+                gap: 5px;
+            }
+            .info-row {
+                gap: 6px;
+            }
+            .nav {
+                position: static;
+                flex-direction: row;
+                gap: 4px;
+                padding: 4px 2px;
+                margin-bottom: 10px;
+                width: 100vw;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="bg-white shadow-md sticky top-0 z-50 transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white mr-3">
+                        <i class="fa fa-leaf text-xl"></i>
+                    </div>
+                    <span style="font-family: '隶书', serif; font-size: 2.5em; margin: 0;">胡荣桂教授课题组</span>
+                </div>
+                <!-- 桌面导航 -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-neutral-700 hover:text-primary font-medium transition-colors">首页</a>
+                    <a href="#team" class="text-neutral-700 hover:text-primary font-medium transition-colors">团队成员</a>
+                    <a href="achievements.html" class="text-neutral-700 hover:text-primary font-medium transition-colors">科研成果</a>
+                    <a href="resources.html" class="text-neutral-700 hover:text-primary font-medium transition-colors">资源下载</a>
+                    <a href="researchEnvironment.html" class="text-neutral-700 hover:text-primary font-medium transition-colors">科研环境</a>
+                    <a href="activity.html" class="text-neutral-700 hover:text-primary font-medium transition-colors">组内活动</a>
+                    <a href="#contact" class="text-neutral-700 hover:text-primary font-medium transition-colors">联系我们</a>
+                </div>
+                <!-- 移动端菜单按钮 -->
+                <button id="menu-toggle" class="md:hidden text-neutral-700 focus:outline-none">
+                    <i class="fa fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- 移动端菜单 -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="container mx-auto px-4 py-3 space-y-3">
+                <a href="#home" class="block text-neutral-700 hover:text-primary font-medium transition-colors">首页</a>
+                <a href="#team" class="block text-neutral-700 hover:text-primary font-medium transition-colors">团队成员</a>
+                <a href="#research" class="block text-neutral-700 hover:text-primary font-medium transition-colors">研究方向</a>
+                <a href="#publications" class="block text-neutral-700 hover:text-primary font-medium transition-colors">科研成果</a>
+                <a href="resources.html" class="block text-neutral-700 hover:text-primary font-medium transition-colors">资源下载</a>
+                <a href="researchEnviroment.html" class="block text-neutral-700 hover:text-primary font-medium transition-colors">科研环境</a>
+                <a href="#contact" class="block text-neutral-700 hover:text-primary font-medium transition-colors">联系我们</a>
+            </div>
+        </div>
+    </nav>
+    <div class="top-banner" style="width:100vw;position:relative;z-index:200;background:#40916c;color:#fff;text-align:center;font-size:1.25em;font-weight:bold;letter-spacing:1px;padding:18px 0 14px 0;box-shadow:0 2px 12px rgba(64,145,108,0.10);">
+        本课题组涵盖多位教授、副教授、博士生和硕士生，本网页只列举教授和副教授成员
+    </div>
+    <div class="nav" id="nav"></div>
+    <div class="scroll-container" id="scrollContainer" style="height:auto;overflow-y:visible;scroll-snap-type:none;padding-top:24px;">
+        <!-- 成员内容由JS生成 -->
+    </div>
+    <script>
+    const members = [
+        {
+            id: 'hurg',
+            name: '胡荣桂',
+            title: '教授',
+            avatar: 'https://github.com/hsywww/huronggui-lab/blob/main/picture/%E8%83%A1%E8%8D%A3%E6%A1%82.jpg?raw=true',
+            link: 'https://zyhj.hzau.edu.cn/info/1183/7588.htm',
+            email: 'hurg@hzau.edu.cn',
+            research: '物质循环与环境效应；土壤过程与环境效应；污染环境（水、土）的修复与治理',
+            intro: '1998-2001 日本北海道大学 博士<br>1983-1986 中国科学院 硕士<br>1979-1983 华中农学院土壤与农业化学系 本科'
+        },
+        {
+            id: 'xiangrb',
+            name: '向荣彪',
+            title: '副教授',
+            avatar: 'https://github.com/hsywww/huronggui-lab/blob/main/picture/%E5%90%91%E8%8D%A3%E5%BD%AA.jpg?raw=true',
+            link: 'https://zyhj.hzau.edu.cn/info/1184/7622.htm',
+            email: 'xiangrb@hzau.edu.cn',
+            research: '大气颗粒物污染的采样和分析、畜禽粪便温室气体减排等。',
+            intro: '1994年毕业于北京林业大学林产化工专业获学士学位，2000年毕业于韩国光州科学技术院环境科学与工程系获硕士学位，2005年毕业于韩国光州科学技术院环境科学与工程系获博士学位。主要从事空气污染控制方面的教学和科研工作，目前研究领域为大气颗粒物污染的采样和分析、畜禽粪便温室气体减排等。'
+        },
+        {
+            id: 'wangyan',
+            name: '王砚',
+            title: '副教授',
+            avatar: 'https://github.com/hsywww/huronggui-lab/blob/main/picture/%E7%8E%8B%E7%A0%9A.jpg?raw=true',
+            link: 'https://zyhj.hzau.edu.cn/info/1184/7617.htm',
+            email: 'wangyan@hzau.edu.cn',
+            research: '农业固体废物处理与资源化、土壤环境化学',
+            intro: '华中农业大学资源与环境学院环境科学和工程系副教授，2001年6月于武汉理工大学获环境工程硕士学位，2012年6月于华中农业大学获土壤学博士学位。从事农业废弃物综合利用、农业面源污染防控技术、生物有机肥生产工艺研发、土壤铁锰氧化物形成转化及其与污染物的相互作用等方面的研究工作，主持国家自然科学青年基金、华中农业大学校自主创新基金、新进博士启动基金等各1项，参加国家自然科学基金7项、武汉市科技攻关项目2项，以及省部级、地市级横向项目多项。'
+        },
+        {
+            id: 'jiangyb',
+            name: '姜炎彬',
+            title: '副教授',
+            avatar: 'https://github.com/hsywww/huronggui-lab/blob/main/picture/%E5%A7%9C%E7%82%8E%E5%BD%AC.jpg?raw=true',
+            link: 'https://zyhj.hzau.edu.cn/info/1184/7593.htm',
+            email: 'jiangyb@hzau.edu.cn',
+            research: '植物生态学、土壤生态学、全球变化生态学',
+            intro: '2012年6月毕业于中国农业大学生物学院植物学专业植物生态学方向，获得理学博士学位，2010-2011年间在荷兰Univerisity of Twente联合培养一年。2012年至2014年在中国科学院地理科学与资源研究所博士后进行为期2年的博士后研究。'
+        },
+        {
+            id: 'linshan',
+            name: '林杉',
+            title: '副教授',
+            avatar: 'https://github.com/hsywww/huronggui-lab/blob/main/picture/%E6%9E%97%E6%9D%89.jpg?raw=true',
+            link: 'https://zyhj.hzau.edu.cn/info/1184/7598.htm',
+            email: 'linshan@hzau.edu.cn',
+            research: '农业温室气体排放；酸性土壤改良；农业面源污染阻控',
+            intro: '2011年毕业于华中农业大学土壤学专业，获博士学位，2018-2019年在英国班戈大学威尔士环境中心以访问学者身份从事研究工作。担任10余种SCI期刊审稿人，发表论文60余篇，其中第一作者或通讯作者论文22篇。申请专利8项，参与获批十堰市地方标准2项，获湖北省自然科学优秀论文一等奖2项、三等奖1项。主编或参编教材2部，参编专著3部。'
+        },
+        {
+            id: 'wuyupeng',
+            name: '伍玉鹏',
+            title: '副教授',
+            avatar: 'https://github.com/hsywww/huronggui-lab/blob/main/picture/%E4%BC%8D%E7%8E%89%E9%B9%8F.jpg?raw=true',
+            link: 'https://zyhj.hzau.edu.cn/info/1184/7597.htm',
+            email: 'wuyupeng@hzau.edu.cn',
+            research: '土壤生态学、蚯蚓养殖与综合利用',
+            intro: '2004年至2013年于中国农业大学依次获得生态学学士、硕士、博士学位，期间赴University of Tsukuba和University of California, Davis进行访学。2013年7月入职华中农业大学资源与环境学院生态环境系工作。'
+        },
+        {
+            id: 'zhaojinsong',
+            name: '赵劲松',
+            title: '副教授',
+            avatar: 'https://github.com/hsywww/huronggui-lab/blob/main/picture/%E8%B5%B5%E5%8A%B2%E6%9D%BE.png?raw=true',
+            link: 'https://zyhj.hzau.edu.cn/info/1184/7599.htm',
+            email: 'zhaojinsong@hzau.edu.cn',
+            research: '土壤生态/生态模型/生态风险评价',
+            intro: '2005，南京大学，理学博士<br>2002，东北师范大学，理学硕士<br>1999，东北师范大学，理学学士'
+        },
+        {
+            id: 'haorong',
+            name: '郝蓉',
+            title: '副教授',
+            avatar: 'https://github.com/hsywww/huronggui-lab/blob/main/picture/%E9%83%9D%E8%93%89.jpg?raw=true',
+            link: 'https://zyhj.hzau.edu.cn/info/1184/7626.htm',
+            email: 'haorong@hzau.edu.cn',
+            research: '污染生态与恢复生态',
+            intro: '1995.09–1999.06 山西农业大学，农学学士<br>1999.09–2002.06 山西农业大学，理学硕士土壤学专业<br>2002.09–2005.06 中国科学院华南植物研究所，理学博士生态学专业<br>2005.07-2016.02华中农业大学<br>2016.02–2017.02美国奥多明尼昂大学（Old Dorminion University）化学系访问学者<br>2017.02至今华中农业大学'
+        },
+    ];
+    members.forEach((m, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'nav-btn';
+        btn.textContent = m.name;
+        btn.onclick = () => {
+            document.getElementById('section-' + m.id).scrollIntoView({behavior: 'smooth', block: 'center'});
+        };
+        btn.id = 'nav-' + m.id;
+        document.getElementById('nav').appendChild(btn);
+    });
+    members.forEach((m, idx) => {
+        const section = document.createElement('section');
+        section.className = 'member-section';
+        section.id = 'section-' + m.id;
+        // 只展示主成员，无淡出背景成员
+        const main = document.createElement('div');
+        main.className = 'member-main';
+        main.innerHTML = memberHtml(m);
+        section.appendChild(main);
+        document.getElementById('scrollContainer').appendChild(section);
+    });
+    // 高亮当前导航
+    function highlightNav() {
+        let found = false;
+        members.forEach((m, idx) => {
+            const sec = document.getElementById('section-' + m.id);
+            const rect = sec.getBoundingClientRect();
+            const btn = document.getElementById('nav-' + m.id);
+            if (!found && rect.top < window.innerHeight/2 && rect.bottom > window.innerHeight/2) {
+                btn.classList.add('active');
+                found = true;
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+    }
+    window.addEventListener('scroll', highlightNav, true);
+    setTimeout(highlightNav, 500);
+    function memberHtml(m) {
+        return `<img class="avatar" src="${m.avatar}" alt="${m.name}" onerror="this.src='https://via.placeholder.com/120x160?text=${m.name}';">
+            <div class="info">
+                <div class="info-row"><a href="${m.link}" class="name" target="_blank">${m.name}</a><span class="title">${m.title}</span></div>
+                <span class="subinfo">
+                    <span><i class='fa fa-envelope'></i>${m.email}</span><br>
+                    <span><i class='fa fa-flask'></i>${m.research}</span>
+                </span>
+                <span class="intro">${m.intro || ''}</span>
+            </div>`;
+    }
+    </script>
+</body>
+</html>
