@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>胡荣桂教授课题组</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#165DFF',
+                        secondary: '#36CFC9',
+                        accent: '#FF7D00',
+                        neutral: {
+                            100: '#F5F7FA',
+                            200: '#E4E7ED',
+                            300: '#DCDFE6',
+                            400: '#C0C4CC',
+                            500: '#909399',
+                            600: '#606266',
+                            700: '#303133',
+                            800: '#1E1E1E',
+                        }
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+          display: flex;
+          flex-direction: column;
+          margin: 0;
+          font-family: Arial, sans-serif;
+          min-height: 100vh;
+        }
+    
+        header {
+          background: linear-gradient(to right, #2e8b57, #a8d5ba);
+          color: white;
+          padding: 40px 20px;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+          text-align: center;
+          position: relative;
+        }
+    
+        .header-container {
+          flex-direction: column;
+          align-items: center;
+        }
+    
+        .header-container img {
+          margin-bottom: 20px;
+        }
+    
+        .title h1 {
+          font-size: 2.5em;
+          margin: 0;
+        }
+    
+        .title h2 {
+          font-size: 1.5em;
+          margin: 10px 0 0;
+        }
+    
+        .top-right {
+          position: absolute;
+          top: 20px;
+          right: 20px;
+          display: flex;
+          gap: 10px;
+        }
+    
+        #search-bar {
+          padding: 10px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+        }
+    
+        nav {
+          background-color: #2e8b57;
+          padding: 10px 0;
+          text-align: center;
+        }
+    
+        nav ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          display: flex;
+          justify-content: center;
+          gap: 20px;
+        }
+    
+        nav ul li {
+          display: inline;
+        }
+    
+        nav ul li a {
+          text-decoration: none;
+          color: white;
+          font-weight: bold;
+        }
+    
+        .sidebar {
+          width: 200px;
+          background-color: #f4f4f4;
+          padding: 20px;
+          box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+    
+        .sidebar ul {
+          list-style: none;
+          padding: 0;
+        }
+    
+        .sidebar ul li {
+          margin: 10px 0;
+        }
+    
+        .sidebar ul li a {
+          text-decoration: none;
+          color: #333;
+          font-weight: bold;
+        }
+    
+        .content {
+          flex: 1;
+          padding: 20px;
+        }
+    
+        .main-content {
+          display: flex;
+          flex: 1;
+        }
+    
+        footer {
+          background-color: #2e8b57;
+          color: white;
+          text-align: center;
+          padding: 10px;
+          margin-top: auto;
+        }
+    
+        .journals {
+          display: flex;
+          gap: 10px;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+    
+        .journals a {
+          display: inline-block;
+          width: 200px;
+          height: 200px;
+          overflow: hidden;
+          border-radius: 10px;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+    
+        .journals img {
+          width: 100%;
+          height: auto;
+          aspect-ratio: 16 / 9;
+          object-fit: cover;
+        }
+
+        .environment {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+          }
+      
+          .environment a {
+            display: inline-block;
+            width: 500px;
+            height: 500px;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+          }
+      
+          .environment img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+          }
+          .anlizs_lb {
+            overflow: auto;
+            height: inherit;
+        }
+        
+        .anlizs_lb li {
+            width: 292px;
+            height: 260px;
+            background: #e3e3e3;
+            float: left;
+            margin: 5.3px 5.3px;
+            text-align: center;
+            position: relative;
+            display: block;
+        }
+        
+        .anlizs_lb li .anlz_tp_z {
+            width: 100%;
+            height: 210px;
+            position: absolute;
+            display: block;
+            overflow: hidden;
+        }
+        
+        .anlizs_lb li .anlz_tp {
+            width: 100%;
+            height: 210px;
+            position: absolute;
+            display: block;
+        }
+        
+        .anlizs_lb li .anlz_fg {
+            width: 100%;
+            height: 210px;
+            background: rgba(60, 140, 183, .8);
+            z-index: 1;
+            position: absolute;
+            display: block;
+            top: 210px;
+        }
+        
+        .anlizs_lb li .anlz_fg .fg_xk {
+            width: 175px;
+            height: 40px;
+            border: solid 1px #fff;
+            margin: 90px 0 0 54px;
+            float: left;
+        }
+        
+        .anlizs_lb li .anlz_fg .fg_xk p {
+            color: #fff;
+            float: left;
+            font-size: 20px;
+            margin: 0 0 0 30px;
+            line-height: 38px;
+            font-family: "微软雅黑";
+        }
+        
+        .anlizs_lb li .anlz_fg .fg_xk img {
+            float: left;
+            margin: 10px 0 0 8px;
+        }
+        
+        .anlizs_lb li .anlibt {
+            font-size: 20px;
+            line-height: 45px;
+            color: #2f2f2f;
+            position: relative;
+            width: 100%;
+            height: 52px;
+            top: 210px;
+        }
+        
+        .anlizs_lb li .anlibt:hover {
+            color: #0a608f;
+        }
+        
+        .anlizs_lb li .anlz_tp_z:hover .anlz_fg {
+            -webkit-transform: translate(0px, -130px);
+            -moz-transform: translate50px, -130px);
+            transform: translate(0px, -210px);
+            transition: all .2s ease-in 0s;
+            -webkit-transition: all .2s ease-in 0s;
+            -moz-transition: all .2s ease-in 0s;
+        }
+        
+      </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="bg-white shadow-md sticky top-0 z-50 transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white mr-3">
+                        <i class="fa fa-leaf text-xl"></i>
+                    </div>
+                    <span style="font-family: '隶书', serif; font-size: 2.5em; margin: 0;">胡荣桂教授课题组</span>
+                </div>
+                
+                <!-- 桌面导航 -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-neutral-700 hover:text-primary font-medium transition-colors">首页</a>
+                    <a href="teamMembers.html" class="text-neutral-700 hover:text-primary font-medium transition-colors">团队成员</a>
+                    <a href="achievements.html" class="text-neutral-700 hover:text-primary font-medium transition-colors">科研成果</a>
+                    <a href="resources.html" class="text-neutral-700 hover:text-primary font-medium transition-colors">资源下载</a>
+                    <a href="researchEnvironment.html" class="text-neutral-700 hover:text-primary font-medium transition-colors">科研环境</a>
+                    <a href="activity.html" class="text-neutral-700 hover:text-primary font-medium transition-colors">组内活动</a>
+                    <a href="#contact" class="text-neutral-700 hover:text-primary font-medium transition-colors">联系我们</a>
+                </div>
+                
+                <!-- 移动端菜单按钮 -->
+                <button id="menu-toggle" class="md:hidden text-neutral-700 focus:outline-none">
+                    <i class="fa fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- 移动端菜单 -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="container mx-auto px-4 py-3 space-y-3">
+                <a href="#home" class="block text-neutral-700 hover:text-primary font-medium transition-colors">首页</a>
+                <a href="teamMembers.html" class="block text-neutral-700 hover:text-primary font-medium transition-colors">团队成员</a>
+                <a href="#research" class="block text-neutral-700 hover:text-primary font-medium transition-colors">研究方向</a>
+                <a href="#publications" class="block text-neutral-700 hover:text-primary font-medium transition-colors">科研成果</a>
+                <a href="resources.html" class="block text-neutral-700 hover:text-primary font-medium transition-colors">资源下载</a>
+                <a href="researchEnviroment.html" class="block text-neutral-700 hover:text-primary font-medium transition-colors">科研环境</a>
+                <a href="#contact" class="block text-neutral-700 hover:text-primary font-medium transition-colors">联系我们</a>
+            </div>
+        </div>
+    </nav>
+
+        <div>
+            <h2><strong>2021年</strong> </h2>
+            <ul class="anlizs_lb">
+                <li>
+                    <div class="anlz_tp_z">
+                        <div class="anlz_tp">
+                            <a href="images/2021年/东附楼志愿工作.jpg" target=" _blank"><img src="images/2021年/东附楼志愿工作.jpg" width="291" height="210"></a>
+                        </div>
+                    </div>
+                    <a class="anlibt" href="images/2021年/东附楼志愿工作.jpg" target=" _blank">东附楼志愿工作</a>
+                </li>
+                <li>
+                    <div class="anlz_tp_z">
+                        <div class="anlz_tp">
+                            <a href="images\2021年\绿博羽毛球赛.jpg" target=" _blank"><img src="images\2021年\绿博羽毛球赛.jpg" width="291" height="210"></a>
+                        </div>
+                    </div>
+                    <a class="anlibt" href="images\2021年\绿博羽毛球赛.jpg" target=" _blank">绿博羽毛球赛</a>
+                </li>
+                <li>
+                    <div class="anlz_tp_z">
+                        <div class="anlz_tp">
+                            <a href="images\2021年\中共五大会址.png" target=" _blank"><img src="images\2021年\中共五大会址.png" width="291" height="210"></a>
+                        </div>
+                    </div>
+                    <a class="anlibt" href="images\2021年\中共五大会址.png" target=" _blank">中共五大会址</a>
+                </li>
+                
+            </ul>
+            <p>&nbsp;</p>
+            <h2><strong>2022年</strong> </h2>
+            <ul class="anlizs_lb">
+                <li>
+                    <div class="anlz_tp_z">
+                        <div class="anlz_tp">
+                            <a href="images\2022年\羽毛球绿博杯.jpg" target=" _blank"><img src="images\2022年\羽毛球绿博杯.jpg" width="291" height="210"></a>
+                        </div>
+                    </div>
+                    <a class="anlibt" href="images\2022年\羽毛球绿博杯.jpg" target=" _blank">羽毛球绿博杯</a>
+                </li>
+                
+            </ul>
+            <p>&nbsp;</p>
+            <h2><strong>2024年</strong> </h2>
+            <ul class="anlizs_lb">
+                <li>
+                    <div class="anlz_tp_z">
+                        <div class="anlz_tp">
+                            <a href="images\2024年\毕业合照.jpg" target=" _blank"><img src="images\2024年\毕业合照.jpg" width="291" height="210"></a>
+                        </div>
+                    </div>
+                    <a class="anlibt" href="images\2024年\毕业合照.jpg" target=" _blank">毕业合照</a>
+                </li>
+                <li>
+                    <div class="anlz_tp_z">
+                        <div class="anlz_tp">
+                            <a href="images\2024年\采土样.JPG" target=" _blank"><img src="images\2024年\采土样.JPG" width="291" height="210"></a>
+                        </div>
+                    </div>
+                    <a class="anlibt" href="images\2024年\采土样.JPG" target=" _blank">采土样</a>
+                </li>
+                <li>
+                    <div class="anlz_tp_z">
+                        <div class="anlz_tp">
+                            <a href="images\2024年\会议.jpg" target=" _blank"><img src="images\2024年\会议.jpg" width="291" height="210"></a>
+                        </div>
+                    </div>
+                    <a class="anlibt" href="images\2024年\会议.jpg" target=" _blank">会议</a>
+                </li>
+                <li>
+                    <div class="anlz_tp_z">
+                        <div class="anlz_tp">
+                            <a href="images\2024年\聚餐 (2).jpg" target=" _blank"><img src="images\2024年\聚餐 (2).jpg" width="291" height="210"></a>
+                        </div>
+                    </div>
+                    <a class="anlibt" href="images\2024年\聚餐 (2).jpg" target=" _blank">聚餐</a>
+                </li>
+                <li>
+                    <div class="anlz_tp_z">
+                        <div class="anlz_tp">
+                            <a href="images\2024年\聚餐 (3).jpg" target=" _blank"><img src="images\2024年\聚餐 (3).jpg" width="291" height="210"></a>
+                        </div>
+                    </div>
+                    <a class="anlibt" href="images\2024年\聚餐 (3).jpg" target=" _blank">聚餐</a>
+                </li>
+                <li>
+                    <div class="anlz_tp_z">
+                        <div class="anlz_tp">
+                            <a href="images\2024年\聚餐 (4).jpg" target=" _blank"><img src="images\2024年\聚餐 (4).jpg" width="291" height="210"></a>
+                        </div>
+                    </div>
+                    <a class="anlibt" href="images\2024年\聚餐 (4).jpg" target=" _blank">聚餐</a>
+                </li>
+            </ul>
+            <p>&nbsp;</p>
+            <h2><strong>2025年</strong></h2>
+
+            <ul class="anlizs_lb">
+                <li>
+                    <div class="anlz_tp_z">
+                        <div class="anlz_tp">
+                            <a href="images\2025年\会议jpg.jpg" target=" _blank"><img src="images\2025年\会议jpg.jpg" width="291" height="210"></a>
+                        </div>
+                    </div>
+                    <a class="anlibt" href="images\2025年\会议jpg.jpg" target=" _blank">会议</a>
+                </li>
+                <li>
+                    <div class="anlz_tp_z">
+                        <div class="anlz_tp">
+                            <a href="images\2025年\聚餐.jpg" target=" _blank"><img src="images\2025年\聚餐.jpg" width="291" height="210"></a>
+                        </div>
+                    </div>
+                    <a class="anlibt" href="images\2025年\聚餐.jpg" target=" _blank">聚餐</a>
+                </li>
+                <li>
+                    <div class="anlz_tp_z">
+                        <div class="anlz_tp">
+                            <a href="images\2025年\组内聚餐.jpg" target=" _blank"><img src="images\2025年\组内聚餐.jpg" width="291" height="210"></a>
+                        </div>
+                    </div>
+                    <a class="anlibt" href="images\2025年\组内聚餐.jpg" target=" _blank">组内聚餐</a>
+                </li>
+                
+                <p>&nbsp;</p>
+               
+                <p>&nbsp;</p>
+
+                <p>&nbsp;</p>
+
+            </ul>
+        </div>
+      
+        </div>
+</body>
+</html>
+
