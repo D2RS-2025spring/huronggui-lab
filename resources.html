@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>胡荣桂教授课题组</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    primary: '#165DFF',
+                    secondary: '#36CFC9',
+                    accent: '#FF7D00',
+                    neutral: {
+                        100: '#F5F7FA',
+                        200: '#E4E7ED',
+                        300: '#DCDFE6',
+                        400: '#C0C4CC',
+                        500: '#909399',
+                        600: '#606266',
+                        700: '#303133',
+                        800: '#1E1E1E',
+                    }
+                },
+                fontFamily: {
+                    inter: ['Inter', 'sans-serif'],
+                },
+            }
+        }
+    }
+</script>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      min-height: 100vh;
+    }
+
+    header {
+      background: linear-gradient(to right, #2e8b57, #a8d5ba);
+      color: white;
+      padding: 40px 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      position: relative;
+    }
+
+    .header-container {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .header-container img {
+      margin-bottom: 20px;
+    }
+
+    .title h1 {
+      font-size: 2.5em;
+      margin: 0;
+    }
+
+    .title h2 {
+      font-size: 1.5em;
+      margin: 10px 0 0;
+    }
+
+    .top-right {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      gap: 10px;
+    }
+
+    #search-bar {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    nav {
+      background-color: #2e8b57;
+      padding: 10px 0;
+      text-align: center;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    nav ul li {
+      display: inline;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+    }
+
+    .sidebar {
+      width: 200px;
+      background-color: #f4f4f4;
+      padding: 20px;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sidebar ul li {
+      margin: 10px 0;
+    }
+
+    .sidebar ul li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+
+    .content {
+      flex: 1;
+      padding: 20px;
+    }
+
+    .main-content {
+      display: flex;
+      flex: 1;
+    }
+
+    footer {
+      background-color: #2e8b57;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      margin-top: auto;
+    }
+
+    .journals {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .journals a {
+      display: inline-block;
+      width: 200px;
+      height: 200px;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .journals img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+  <!-- 导航栏 -->
+  <nav class="bg-white shadow-md sticky top-0 z-50 transition-all duration-300" id="navbar">
+    <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center py-4">
+            <div class="flex items-center">
+                <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white mr-3">
+                    <i class="fa fa-leaf text-xl"></i>
+                </div>
+                <span style="font-family: '隶书', serif; font-size: 2.5em; margin: 0;">胡荣桂教授课题组</span>
+            </div>
+            
+            <!-- 桌面导航 -->
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="text-neutral-700 hover:text-primary font-medium transition-colors">首页</a>
+                <a href="teamMembers.html" class="text-neutral-700 hover:text-primary font-medium transition-colors">团队成员</a>
+                <a href="#publications" class="text-neutral-700 hover:text-primary font-medium transition-colors">科研成果</a>
+                <a href="resources.html" class="text-neutral-700 hover:text-primary font-medium transition-colors">资源下载</a>
+                <a href="researchEnvironment.html" class="text-neutral-700 hover:text-primary font-medium transition-colors">科研环境</a>
+                <a href="#research" class="text-neutral-700 hover:text-primary font-medium transition-colors">组内活动</a>
+                <a href="#contact" class="text-neutral-700 hover:text-primary font-medium transition-colors">联系我们</a>
+            </div>
+            
+            <!-- 移动端菜单按钮 -->
+            <button id="menu-toggle" class="md:hidden text-neutral-700 focus:outline-none">
+                <i class="fa fa-bars text-xl"></i>
+            </button>
+        </div>
+    </div>
+    
+    <!-- 移动端菜单 -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+        <div class="container mx-auto px-4 py-3 space-y-3">
+            <a href="#home" class="block text-neutral-700 hover:text-primary font-medium transition-colors">首页</a>
+            <a href="teamMembers.html" class="block text-neutral-700 hover:text-primary font-medium transition-colors">团队成员</a>
+            <a href="#research" class="block text-neutral-700 hover:text-primary font-medium transition-colors">研究方向</a>
+            <a href="#publications" class="block text-neutral-700 hover:text-primary font-medium transition-colors">科研成果</a>
+            <a href="resources.html" class="block text-neutral-700 hover:text-primary font-medium transition-colors">资源下载</a>
+            <a href="researchEnviroment.html" class="block text-neutral-700 hover:text-primary font-medium transition-colors">科研环境</a>
+            <a href="#contact" class="block text-neutral-700 hover:text-primary font-medium transition-colors">联系我们</a>
+        </div>
+    </div>
+</nav>
+  <header>
+    <div class="header-container">
+      <!-- 校徽 -->
+      <img src="images\pictures\xh.png" alt="校徽" style="width: 200px; height: auto; margin-right: 20px;">
+      <!-- 标题 -->
+      <div class="title">
+        <h1 style="font-family: '隶书', serif; font-size: 2.5em; margin: 0;">欢迎访问环境生态课题组！</h1>
+        <h2 style="font-family: 'Georgia', serif; font-size: 1.5em; margin: 10px 0 0;">Welcome to the Environmental Ecology Research Group!</h2>
+      </div>
+    </div>
+  </header>
+  <div class="top-right">
+    <input type="text" id="search-bar" placeholder="搜索...">
+    <button onclick="searchContent()">搜索</button>
+    <button onclick="toggleLanguage()">切换中/EN</button>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="#recommendations">公众号推荐</a></li>
+      <li><a href="#websites">科研网站</a></li>
+      <li><a href="#software">常用软件</a></li>
+      <li><a href="#instruments">仪器及实验操作</a></li>
+      <li><a href="#journals">常用期刊</a></li>
+    </ul>
+  </nav>
+  <div class="main-content">
+    <div class="sidebar">
+      <ul>
+        <li><a href="#recommendations">公众号推荐</a></li>
+        <li><a href="#websites">科研网站</a></li>
+        <li><a href="#software">常用软件</a></li>
+        <li><a href="#instruments">仪器及实验操作</a></li>
+        <li><a href="#journals">常用期刊</a></li>
+      </ul>
+    </div>
+    <div class="content">
+      <main>
+        <h3 id="recommendations">公众号推荐</h3>
+        <ul>
+          <li>土壤学报；土壤微生物组；中国环境；环境人environment；宏基因组；生化环材BCEMers；生态学文献分享；生态学家；生信宝典；南农LorMe；农环视界；农业环境科学；农作未来；BioArt植物；天然有机质研究情报；炭索未来；科研菌；水土保持与生态环境治理</li>
+          <li>顶刊收割机；寇享学术；精鼎统计；科研Z库；微科享；红皇后学术；科学网；知社学术圈</li>
+          <li>软件智库；管家小e；Figure图；Paper绘图；数据绘图</li>
+        </ul>
+      
+        <h3 id="websites">科研网站</h3>
+        <ul>
+          <li><a href="https://chat.deepseek.com/" target="_blank">Deepseek</a></li>
+          <li><a href="https://www.xueshu5.com/" target="_blank">谷歌学术</a></li>
+          <li><a href="https://tool.yovisun.com/scihub/" target="_blank">SCI-Hub</a></li>
+          <li><a href="https://kimi.moonshot.cn/" target="_blank">KiMi</a></li>
+          <li><a href="https://www.deepl.com/zh/translator/l/en/en" target="_blank">DEEPL</a></li>
+          <li><a href="https://www.x-mol.com/" target="_blank">X-MOL学术平台</a></li>
+        </ul>
+      
+        <h3 id="software">常用软件</h3>
+        <ul>
+          <li>Origin</li>
+          <li>R语言</li>
+          <li>SPSS</li>
+          <li>Visio</li>
+          <li>Endnote</li>
+          <li>ArcGIS</li>
+        </ul>
+      
+        <h3 id="instruments">仪器及实验操作</h3>
+        <ul>
+          <li><a href="ff.doc" download>实验室常用方法</a></li>
+          <li>TOC仪</li>
+          <li>气相色谱仪</li>
+        </ul>
+      
+        <h3 id="journals">常用期刊</h3>
+        <div class="journals">
+          <a href="images\pictures\1.png" target="_blank"><img src="images\pictures\1.png" alt="危险材料杂志"></a>
+          <a href="images\pictures\2.png" target="_blank"><img src="images\pictures\2.png" alt="环境科学与技术"></a>
+          <a href="images\pictures\3.png" target="_blank"><img src="images\pictures\3.png" alt="资源保护与回收"></a>
+          <a href="images\pictures\4.png" target="_blank"><img src="images\pictures\4.png" alt="期刊4"></a>
+          <a href="images\pictures\5.png" target="_blank"><img src="images\pictures\5.png" alt="期刊5"></a>
+          <a href="images\pictures\6.png" target="_blank"><img src="images\pictures\6.png" alt="期刊6"></a>
+          <a href="images\pictures\7.png" target="_blank"><img src="images\pictures\7.png" alt="期刊7"></a>
+          <a href="images\pictures\8.png" target="_blank"><img src="images\pictures\8.png" alt="期刊8"></a>
+          <a href="images\pictures\9.png" target="_blank"><img src="images\pictures\9.png" alt="期刊9"></a>
+          <a href="images\pictures\10.png" target="_blank"><img src="images\pictures\10.png" alt="期刊10"></a>
+          <a href="images\pictures\11.png" target="_blank"><img src="images\pictures\11.png" alt="期刊11"></a>
+          <a href="images\pictures\12.png" target="_blank"><img src="images\pictures\12.png" alt="期刊12"></a>
+          <a href="images\pictures\13.png" target="_blank"><img src="images\pictures\13.png" alt="期刊13"></a>
+          <a href="images\pictures\14.png" target="_blank"><img src="images\pictures\14.png" alt="期刊14"></a>
+          <a href="images\pictures\15.png" target="_blank"><img src="images\pictures\15.png" alt="期刊15"></a>
+          <a href="images\pictures\16.png" target="_blank"><img src="images\pictures\16.png" alt="期刊16"></a>
+          <a href="images\pictures\17.png" target="_blank"><img src="images\pictures\17.png" alt="期刊17"></a>
+          <a href="images\pictures\18.png" target="_blank"><img src="images\pictures\18.png" alt="期刊18"></a>
+          <a href="images\pictures\19.png" target="_blank"><img src="images\pictures\19.png" alt="期刊19"></a>
+          <a href="images\pictures\20.png" target="_blank"><img src="images\pictures\20.png" alt="期刊20"></a>
+        </div>
+      </main>
+    </div>
+  </div>
+  <footer>
+    <p style="font-family: '隶书', serif; color: white;">
+      联系地址：华中农业大学资源与环境学院<br>
+      电 话：123456789<br>
+      环境生态课题组 | Environmental Ecology Research Group
+    </p>
+    <p style="font-family: 'Georgia', serif; color: white; display: none;">
+      Address: College of Resources and Environment, Huazhong Agricultural University<br>
+      Phone: 123456789<br>
+      Environmental Ecology Research Group
+    </p>
+  </footer>
+</body>
+</html>
