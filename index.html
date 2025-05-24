@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>胡荣桂教授课题组</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#165DFF',
+                        secondary: '#36CFC9',
+                        accent: '#FF7D00',
+                        neutral: {
+                            100: '#F5F7FA',
+                            200: '#E4E7ED',
+                            300: '#DCDFE6',
+                            400: '#C0C4CC',
+                            500: '#909399',
+                            600: '#606266',
+                            700: '#303133',
+                            800: '#1E1E1E',
+                        }
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            background: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        .top-banner {
+            width: 100vw;
+            position: relative;
+            z-index: 200;
+            background: #40916c;
+            color: #fff;
+            text-align: center;
+            font-size: 1.25em;
+            font-weight: bold;
+            letter-spacing: 1px;
+            padding: 18px 0 14px 0;
+            box-shadow: 0 2px 12px rgba(64,145,108,0.10);
+        }
+        .nav {
+            position: fixed;
+            top: 24px;
+            left: 24px;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .nav-btn {
+            background: #e9f5ee;
+            color: #1b4332;
+            border: none;
+            border-radius: 6px;
+            padding: 8px 18px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+        }
+        .nav-btn.active, .nav-btn:hover {
+            background: #40916c;
+            color: #fff;
+        }
+        .scroll-container {
+            height: calc(100vh - 72px);
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+            padding-top: 24px;
+        }
+        .member-section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            scroll-snap-align: center;
+            position: relative;
+            transition: opacity 0.5s;
+        }
+        .member-main {
+            width: 75vw;
+            max-width: 900px;
+            min-width: 320px;
+            height: 60vh;
+            background: linear-gradient(120deg, #e9f5ee 0%, #f7fff7 100%);
+            border-radius: 32px;
+            box-shadow: 0 12px 40px rgba(64,145,108,0.18), 0 4px 16px rgba(0,0,0,0.10);
+            padding: 56px 56px 56px 48px;
+            display: flex;
+            align-items: flex-start;
+            opacity: 1;
+            z-index: 2;
+            position: relative;
+            transition: box-shadow 0.3s, background 0.3s;
+        }
+        .member-main:hover {
+            box-shadow: 0 18px 56px rgba(64,145,108,0.22), 0 8px 24px rgba(0,0,0,0.13);
+            background: linear-gradient(120deg, #d8f3dc 0%, #f7fff7 100%);
+        }
+        .member-fade {
+            width: 75vw;
+            max-width: 900px;
+            min-width: 320px;
+            height: 60vh;
+            background: rgba(255,255,255,0.85);
+            border-radius: 32px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            padding: 56px 56px 56px 48px;
+            display: flex;
+            align-items: flex-start;
+            opacity: 0.13;
+            z-index: 1;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            pointer-events: none;
+        }
+        .avatar {
+            width: 130px;
+            height: 170px;
+            border-radius: 16px;
+            object-fit: cover;
+            object-position: center center;
+            margin-right: 44px;
+            border: 3px solid #b7e4c7;
+            background: #fff;
+            box-shadow: 0 2px 12px rgba(64,145,108,0.10);
+            transition: transform 0.3s;
+        }
+        .member-main .avatar:hover {
+            transform: scale(1.06) translateY(-4px);
+            box-shadow: 0 6px 24px rgba(64,145,108,0.18);
+        }
+        .info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .info-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .name {
+            font-weight: bold;
+            color: #1b4332;
+            font-size: 2em;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 8px #e9f5ee;
+        }
+        .title {
+            margin-left: 18px;
+            color: #40916c;
+            font-size: 1.2em;
+            font-weight: normal;
+            background: #e9f5ee;
+            border-radius: 8px;
+            padding: 2px 14px;
+            box-shadow: 0 1px 4px #e9f5ee;
+        }
+        .subinfo {
+            margin-top: 16px;
+            color: #495057;
+            font-size: 1.08em;
+            line-height: 1.8;
+            background: rgba(233,245,238,0.5);
+            border-radius: 8px;
+            padding: 10px 18px 10px 0;
+            box-shadow: 0 1px 4px #e9f5ee;
+        }
+        .intro {
+            margin-top: 14px;
+            color: #495057;
+            font-size: 1.08em;
+            line-height: 1.8;
+            background: rgba(233,245,238,0.5);
+            border-radius: 8px;
+            padding: 10px 18px 10px 0;
+            box-shadow: 0 1px 4px #e9f5ee;
+            display: block;
+        }
+        @media (max-width: 1000px) {
+            .member-main, .member-fade {
+                width: 98vw;
+                padding: 18px 2vw;
+                height: 60vh;
+            }
+            .avatar {
+                width: 90px;
+                height: 120px;
+                margin-right: 16px;
+            }
+        }
+        @media (max-width: 800px) {
+            .member-main, .member-fade {
+                width: 98vw;
+                padding: 12px 2vw;
+            }
+            .avatar {
+                width: 80px;
+                height: 100px;
+                margin-right: 12px;
+            }
+        }
+        @media (max-width: 600px) {
+            .member-main, .member-fade {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 10vw 2vw;
+                height: auto;
+                min-height: 320px;
+            }
+            .avatar {
+                margin: 0 0 18px 0;
+            }
+            .info-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 6px;
+            }
+            .name {
+                font-size: 1.3em;
+            }
+            .title {
+                font-size: 1em;
+                margin-left: 0;
+                margin-top: 6px;
+            }
+        }
+    </style>
+</head>
+<body class="font-inter bg-neutral-100 text-neutral-700">
+    <!-- 导航栏 -->
+    <nav class="bg-white shadow-md sticky top-0 z-50 transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white mr-3">
+                        <i class="fa fa-leaf text-xl"></i>
+                    </div>
+                    <span style="font-family: '隶书', serif; font-size: 2.5em; margin: 0;">胡荣桂教授课题组</span>
+                </div>
+                
+                <!-- 桌面导航 -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-neutral-700 hover:text-primary font-medium transition-colors">首页</a>
+                    <a href="teamMembers.html" class="text-neutral-700 hover:text-primary font-medium transition-colors">团队成员</a>
+                    <a href="achievements.html" class="text-neutral-700 hover:text-primary font-medium transition-colors">科研成果</a>
+                    <a href="resources.html" class="text-neutral-700 hover:text-primary font-medium transition-colors">资源下载</a>
+                    <a href="researchEnvironment.html" class="text-neutral-700 hover:text-primary font-medium transition-colors">科研环境</a>
+                    <a href="activity.html" class="text-neutral-700 hover:text-primary font-medium transition-colors">组内活动</a>
+                    <a href="#contact" class="text-neutral-700 hover:text-primary font-medium transition-colors">联系我们</a>
+                </div>
+                
+                <!-- 移动端菜单按钮 -->
+                <button id="menu-toggle" class="md:hidden text-neutral-700 focus:outline-none">
+                    <i class="fa fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- 移动端菜单 -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="container mx-auto px-4 py-3 space-y-3">
+                <a href="index.html" class="block text-neutral-700 hover:text-primary font-medium transition-colors">首页</a>
+                <a href="teamMembers.html" class="block text-neutral-700 hover:text-primary font-medium transition-colors">团队成员</a>
+                <a href="#research" class="block text-neutral-700 hover:text-primary font-medium transition-colors">研究方向</a>
+                <a href="achievements.html" class="block text-neutral-700 hover:text-primary font-medium transition-colors">科研成果</a>
+                <a href="resources.html" class="block text-neutral-700 hover:text-primary font-medium transition-colors">资源下载</a>
+                <a href="researchEnviroment.html" class="block text-neutral-700 hover:text-primary font-medium transition-colors">科研环境</a>
+                <a href="#contact" class="block text-neutral-700 hover:text-primary font-medium transition-colors">联系我们</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 首页/英雄区域 -->
+    <section id="home" class="relative h-[80vh] min-h-[600px] flex items-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="images\bg1.jpg" alt="研究组背景" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-primary/40"></div>
+        </div>
+        <div class="container mx-auto px-4 relative z-10 text-white">
+            <div class="max-w-3xl">
+                <h1 class="text-3xl font-bold text-neutral-800 mb-6"">
+                    胡荣桂教授课题组
+                </h1>
+                <p class="text-neutral-700 mb-6">
+                    我们的课题组聚焦于环境科学前沿领域，在物质循环与环境效应、土壤过程与环境效应、污染环境修复治理等方面开展深入研究。
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-neutral-100 to-transparent"></div>
+    </section>
+
+    <!-- 关于我们 -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold text-neutral-800 mb-6">关于研究组</h2>
+                    <p class="text-neutral-700 mb-6">
+                        生态过程与环境效应团队近年来主要关注生源要素的地球化学循环关键过程与环境效应，特别关注农业生态系统碳、氮循环过程与环境效应，土壤碳氮转化过程与温室气体排放，农田管理措施与面源污染机制和防控等。本研究团队主持和参与973、国家重点研发计划、国家科技支撑计划、国家自然科学基金、发改委农业专项等国家级课题，同时承担湖北省农业领域温室气体清单，污染普查等横向课题。培养了一批农业资源与环境领域急需的本科及研究生人才。
+                    </p>
+                    <p class="text-neutral-700 mb-6">
+                        研究团队目前研究室有胡荣桂教授，向荣彪副教授，赵劲松副教授，林杉副教授，郝蓉副教授，伍玉鹏副教授，姜炎彬副教授，博士研究生2人，硕士研究生50人。
+                    </p>
+                    
+                    
+                </div>
+                <div class="relative">
+                    <div class="rounded-xl overflow-hidden shadow-lg hover-scale">
+                        <img src="images\bg2.jpg" alt="研究团队合影" class="w-full h-auto">
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
