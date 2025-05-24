@@ -1,0 +1,24 @@
+name: Deploy HTML to GitHub Pages
+on:
+  push:
+    branches: [ main ]
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. 检出代码（处理子模块问题）
+      - uses: actions/checkout@v4
+        with:
+          submodules: 'recursive'
+      
+      # 2. 跳过有问题的子模块
+      - name: Skip broken submodules
+        run: git submodule update --init --force --recursive || true
+
+      # 3. 自动部署到 GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}  # 自动生成，无需配置
+          publish_dir: ./  # 部署整个仓库
+          keep_files: true # 保留现有文件
