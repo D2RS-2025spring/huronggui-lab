@@ -301,9 +301,77 @@
       cursor: pointer;
       border-radius: 14px;
     }
+    .module-block {
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 2px 12px rgba(64,145,108,0.07);
+      margin: 32px auto 0 auto;
+      padding: 32px 28px 24px 28px;
+      max-width: 900px;
+      width: 95vw;
+    }
+    .module-title {
+      font-size: 1.6em;
+      color: #165DFF;
+      font-weight: bold;
+      margin-bottom: 18px;
+      border-left: 6px solid #36CFC9;
+      padding-left: 12px;
+      letter-spacing: 1px;
+    }
+    .team-members {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-bottom: 12px;
+    }
+    .team-members .member {
+      background: #e9f5ee;
+      border-radius: 10px;
+      padding: 12px 22px;
+      min-width: 120px;
+      text-align: center;
+      font-size: 1.1em;
+      color: #165DFF;
+      font-weight: bold;
+      box-shadow: 0 1px 4px #e9f5ee;
+    }
+    .student-count {
+      margin-top: 8px;
+      color: #606266;
+      font-size: 1.08em;
+    }
+    .intro-section p {
+      font-size: 1.13em;
+      color: #303133;
+      margin-bottom: 0;
+    }
+    .research-section .research-area {
+      margin-bottom: 18px;
+    }
+    .research-section h3 {
+      color: #36CFC9;
+      font-size: 1.15em;
+      margin-bottom: 6px;
+    }
+    .research-section ul {
+      margin: 0 0 0 18px;
+      padding: 0;
+      color: #606266;
+    }
+    .research-section li {
+      margin-bottom: 4px;
+    }
+    .achievements-section p {
+      color: #495057;
+      font-size: 1.08em;
+      margin-bottom: 6px;
+    }
     @media (max-width: 900px) {
       .contact-cards { flex-direction: column; align-items: center; }
       .map-wrapper { width: 98vw; max-width: 340px; }
+      .module-block { padding: 18px 4vw; }
+      .team-members { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
@@ -351,123 +419,107 @@
     </div>
 </nav>
   <header>
-    <div class="header-container">
-      <!-- 校徽 -->
-      <img src="images\pictures\xh.png" alt="校徽" style="width: 200px; height: auto; margin-right: 20px;">
+    <div class="header-container" style="display:flex;flex-direction:column;align-items:center;justify-content:center;">
+      <!-- 校徽居中 -->
+      <img src="images/pictures/xh.png" alt="校徽" style="width: 200px; height: auto; margin: 0 auto 20px auto; display:block;">
       <!-- 标题 -->
-      <div class="title">
-        <h1 style="font-family: '隶书', serif; font-size: 2.5em; margin: 0;">联系我们</h1>
-        
+      <div class="title" style="text-align:center;">
+        <h1 style="font-family: '隶书', serif; font-size: 2.5em; margin: 0;">华中农业大学资源与环境学院环境生态课题组</h1>
+        <h2 style="font-size:1.3em;font-weight:normal;margin:10px 0 0 0;">致力于生态过程与环境效应研究</h2>
       </div>
     </div>
   </header>
-</head>
-<body>
-    <header>
-        <h1>华中农业大学资源与环境学院环境生态课题组</h1>
-        <p>致力于生态过程与环境效应研究</p>
-    </header>
 
-    <div class="content-section">
-        <h2>课题组简介</h2>
-        <p>华中农业大学资源与环境学院环境生态课题组由多位资深教授和副教授组成，致力于研究生态过程与环境效应。</p>
-    </div>
+  <main>
+    <section class="intro-section module-block">
+      <h2 class="module-title">课题组简介</h2>
+      <p>华中农业大学资源与环境学院环境生态课题组由多位资深教授和副教授组成，致力于研究生态过程与环境效应。课题组现有博士研究生7人，硕士研究生35人。</p>
+    </section>
 
-    <div class="content-section">
-        <h2>主要研究方向</h2>
-        
-        <div class="research-area">
-            <h3>1. 农业生态系统碳、氮循环过程与环境效应</h3>
-            <ul>
-                <li>土壤碳、氮转化过程与环境效应</li>
-                <li>农田管理措施与农业面源污染防治</li>
-                <li>农业废弃物的生物处理与有效利用</li>
-                <li>土壤污染物迁移转化与有效控制</li>
-            </ul>
+    <section class="research-section module-block">
+      <h2 class="module-title">主要研究方向</h2>
+      <div class="research-area">
+        <h3>1. 农业生态系统碳、氮循环过程与环境效应</h3>
+        <ul>
+          <li>土壤碳、氮转化过程与环境效应</li>
+          <li>农田管理措施与农业面源污染防治</li>
+          <li>农业废弃物的生物处理与有效利用</li>
+          <li>土壤污染物迁移转化与有效控制</li>
+        </ul>
+      </div>
+      <div class="research-area">
+        <h3>2. 农业活动与大气污染的控制</h3>
+        <p>研究农业活动对大气污染的贡献及其控制措施</p>
+      </div>
+      <div class="research-area">
+        <h3>3. 全球变化及其植物的影响</h3>
+        <p>探讨全球气候变化对植物生长和生态系统的影响</p>
+      </div>
+    </section>
+
+    <section class="team-section module-block">
+      <h2 class="module-title">研究团队</h2>
+      <div class="team-members">
+        <div class="member"><h3>胡荣桂</h3><p>教授</p></div>
+        <div class="member"><h3>赵劲松</h3><p>副教授</p></div>
+        <div class="member"><h3>林杉</h3><p>副教授</p></div>
+        <div class="member"><h3>向荣彪</h3><p>副教授</p></div>
+      </div>
+      <div class="student-count">
+        <span>博士研究生：7人</span> | <span>硕士研究生：35人</span>
+      </div>
+    </section>
+
+    <section class="achievements-section module-block">
+      <h2 class="module-title">近期科研成果</h2>
+      <p>课题组在国际和国内学术期刊上发表了多篇高水平论文，涵盖了土壤碳氮循环、温室气体排放、水循环等多个研究领域。</p>
+      <p>近期在水稻土有机碳矿化机制方面取得了新的研究成果，相关成果发表在了《美国国家科学院院刊》(PNAS)上。</p>
+    </section>
+
+    <section class="contact-section module-block" id="contact-section">
+      <h2 class="module-title">联系我们</h2>
+      <div class="contact-cards">
+        <div class="contact-card">
+          <i class="fa fa-phone contact-icon" aria-hidden="true"></i>
+          <div class="contact-info-text">
+            <span class="contact-label">办公电话</span>
+            <span class="contact-value">027-87282152</span>
+          </div>
         </div>
-        
-        <div class="research-area">
-            <h3>2. 农业活动与大气污染的控制</h3>
-            <p>研究农业活动对大气污染的贡献及其控制措施</p>
+        <div class="contact-card">
+          <i class="fa fa-envelope contact-icon" aria-hidden="true"></i>
+          <div class="contact-info-text">
+            <span class="contact-label">电子邮箱</span>
+            <span class="contact-value"><a href="mailto:rghu@mail.hzau.edu.cn">rghu@mail.hzau.edu.cn</a></span>
+          </div>
         </div>
-        
-        <div class="research-area">
-            <h3>3. 全球变化及其植物的影响</h3>
-            <p>探讨全球气候变化对植物生长和生态系统的影响</p>
+        <div class="contact-card">
+          <i class="fa fa-map-marker contact-icon" aria-hidden="true"></i>
+          <div class="contact-info-text">
+            <span class="contact-label">地址</span>
+            <span class="contact-value">湖北省武汉市华中农业大学资源与环境学院东附楼</span>
+          </div>
         </div>
-    </div>
-
-    <div class="content-section">
-        <h2>研究团队</h2>
-        <div class="team-members">
-            <div class="member">
-                <h3>胡荣桂</h3>
-                <p>教授</p>
+        <div class="contact-card map-card">
+          <div class="map-wrapper">
+            <img src="https://github.com/hsywww/huronggui-lab/blob/main/images/pictures/map.png" alt="华中农业大学地图" class="contact-map-img">
+            <div class="map-marker" id="map-marker"></div>
+            <div class="map-popup" id="map-popup">
+              <strong>湖北省武汉市华中农业大学资源与环境学院东附楼</strong><br>
+              <span style="color:#888;font-size:0.98em;">图上红色标记即为本组办公楼位置</span>
             </div>
-            <div class="member">
-                <h3>赵劲松</h3>
-                <p>副教授</p>
-            </div>
-            <div class="member">
-                <h3>林杉</h3>
-                <p>副教授</p>
-            </div>
-            <div class="member">
-                <h3>向荣彪</h3>
-                <p>副教授</p>
-            </div>
+            <div class="map-overlay" id="map-overlay"></div>
+          </div>
+          <p style="text-align:center;margin-top:8px;">点击红色标记查看详细位置</p>
         </div>
-        <p>课题组现有博士研究生7人，硕士研究生35人。</p>
-    </div>
+      </div>
+    </section>
+  </main>
 
-    <div class="content-section">
-        <h2>近期科研成果</h2>
-        <p>课题组在国际和国内学术期刊上发表了多篇高水平论文，涵盖了土壤碳氮循环、温室气体排放、水循环等多个研究领域。</p>
-        <p>近期在水稻土有机碳矿化机制方面取得了新的研究成果，相关成果发表在了《美国国家科学院院刊》(PNAS)上。</p>
-    </div>
-
-    <div class="content-section" id="contact-section">
-        <h2>联系我们</h2>
-        <div class="contact-cards">
-            <div class="contact-card">
-                <i class="fa fa-phone contact-icon" aria-hidden="true"></i>
-                <div class="contact-info-text">
-                    <span class="contact-label">办公电话</span>
-                    <span class="contact-value">027-87282152</span>
-                </div>
-            </div>
-            <div class="contact-card">
-                <i class="fa fa-envelope contact-icon" aria-hidden="true"></i>
-                <div class="contact-info-text">
-                    <span class="contact-label">电子邮箱</span>
-                    <span class="contact-value"><a href="mailto:rghu@mail.hzau.edu.cn">rghu@mail.hzau.edu.cn</a></span>
-                </div>
-            </div>
-            <div class="contact-card">
-                <i class="fa fa-map-marker contact-icon" aria-hidden="true"></i>
-                <div class="contact-info-text">
-                    <span class="contact-label">地址</span>
-                    <span class="contact-value">湖北省武汉市华中农业大学资源与环境学院东附楼</span>
-                </div>
-            </div>
-            <div class="contact-card map-card">
-                <div class="map-wrapper">
-                    <img src="https://github.com/hsywww/huronggui-lab/blob/main/images/pictures/map.png" alt="华中农业大学地图" class="contact-map-img">
-                    <div class="map-marker" id="map-marker"></div>
-                    <div class="map-popup" id="map-popup">
-                        <strong>湖北省武汉市华中农业大学资源与环境学院东附楼</strong>
-                    </div>
-                    <div class="map-overlay" id="map-overlay"></div>
-                </div>
-                <p style="text-align:center;margin-top:8px;">点击红色标记查看详细位置</p>
-            </div>
-        </div>
-    </div>
-
-    <footer>
-        <p>&copy; 2023 华中农业大学资源与环境学院环境生态课题组 版权所有</p>
-        <p>最后更新: 2023年11月</p>
-    </footer>
+  <footer>
+    <p>&copy; 2023 华中农业大学资源与环境学院环境生态课题组 版权所有</p>
+    <p>最后更新: 2023年11月</p>
+  </footer>
 </body>
 </html>
 <script>
