@@ -2,6 +2,11 @@
 
 组员：胡思雨，李丹，王渝暄，赵瑶瑶，陈琳娜
 
+## 网站网址
+
+正式访问地址：  
+[https://hsywww.github.io/huronggui-lab/](https://hsywww.github.io/huronggui-lab/)
+
 ## 项目介绍
 
 本项目为华中农业大学资源与环境学院胡荣桂教授课题组的学术网站，主要功能包括：
@@ -11,11 +16,6 @@
 - 发布学术活动与资源分享
 - 实现科研成果的可视化传播
 - 建立可信化的学术资源共享平台
-
-## 网站网址
-
-正式访问地址：  
-[https://hsywww.github.io/huronggui-lab/](https://hsywww.github.io/huronggui-lab/)
 
 ## 技术说明
 
