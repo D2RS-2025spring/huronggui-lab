@@ -246,6 +246,10 @@
       background: transparent;
       z-index: 2;
       cursor: pointer;
+      transition: transform 0.18s cubic-bezier(.4,0,.2,1);
+    }
+    .map-marker:hover, .map-marker:active {
+      transform: translate(-50%, -110%) scale(1.12);
     }
     .map-marker::before {
       content: '';
@@ -288,10 +292,18 @@
       z-index: 10;
       box-shadow: 0 4px 16px rgba(255,77,79,0.13);
       pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.28s cubic-bezier(.4,0,.2,1);
     }
     .map-popup.active {
       display: block;
       pointer-events: auto;
+      opacity: 1;
+      animation: popupFadeIn 0.32s cubic-bezier(.4,0,.2,1);
+    }
+    @keyframes popupFadeIn {
+      from { opacity: 0; transform: translate(-50%, -120%) scale(0.95); }
+      to { opacity: 1; transform: translate(-50%, -100%) scale(1); }
     }
     .map-overlay {
       position: absolute;
@@ -335,6 +347,11 @@
       color: #165DFF;
       font-weight: bold;
       box-shadow: 0 1px 4px #e9f5ee;
+      transition: box-shadow 0.18s, transform 0.18s;
+    }
+    .team-members .member:hover, .team-members .member:active {
+      transform: scale(1.06);
+      box-shadow: 0 4px 16px #c0e6d3;
     }
     .student-count {
       margin-top: 8px;
@@ -372,6 +389,85 @@
       .map-wrapper { width: 98vw; max-width: 340px; }
       .module-block { padding: 18px 4vw; }
       .team-members { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 600px) {
+      header {
+        padding: 18px 4vw;
+      }
+      .header-container img {
+        width: 120px !important;
+        margin-bottom: 12px;
+      }
+      .title {
+        padding: 12px 0 10px 0 !important;
+        max-width: 98vw !important;
+        border-radius: 12px !important;
+      }
+      .title h1 {
+        font-size: 1.2em !important;
+      }
+      .title h2 {
+        font-size: 0.95em !important;
+      }
+      .module-block {
+        padding: 12px 2vw !important;
+        border-radius: 12px !important;
+        margin-top: 18px !important;
+      }
+      .module-title {
+        font-size: 1.15em !important;
+        padding-left: 7px !important;
+        border-left-width: 4px !important;
+      }
+      .contact-cards {
+        gap: 12px !important;
+      }
+      .contact-card, .contact-card.map-card {
+        min-width: 0 !important;
+        width: 100% !important;
+        padding: 16px 8px !important;
+        border-radius: 12px !important;
+        transition: box-shadow 0.28s cubic-bezier(.4,0,.2,1), background 0.28s, transform 0.22s;
+      }
+      .contact-card:hover, .contact-card:active {
+        transform: translateY(-4px) scale(1.025);
+        box-shadow: 0 12px 32px rgba(64,145,108,0.18);
+        background: linear-gradient(120deg, #d8f3dc 0%, #f7fff7 100%);
+      }
+      .map-wrapper {
+        width: 98vw !important;
+        max-width: 98vw !important;
+        height: 160px !important;
+        border-radius: 10px !important;
+      }
+      .map-popup {
+        min-width: 120px !important;
+        padding: 8px 10px !important;
+        font-size: 0.98em !important;
+        border-radius: 8px !important;
+      }
+      .team-members {
+        gap: 10px !important;
+      }
+      .team-members .member {
+        padding: 8px 8px !important;
+        font-size: 0.98em !important;
+        border-radius: 7px !important;
+      }
+      .journals a {
+        width: 98vw !important;
+        height: 120px !important;
+        border-radius: 8px !important;
+        transition: box-shadow 0.22s, transform 0.18s;
+      }
+      .journals a:hover, .journals a:active {
+        transform: scale(1.04) translateY(-2px);
+        box-shadow: 0 8px 24px rgba(22,93,255,0.13);
+      }
+      footer {
+        font-size: 0.95em !important;
+        padding: 8px 2vw !important;
+      }
     }
   </style>
 </head>
@@ -423,9 +519,12 @@
       <!-- 校徽居中 -->
       <img src="images/pictures/xh.png" alt="校徽" style="width: 200px; height: auto; margin: 0 auto 20px auto; display:block;">
       <!-- 标题 -->
-      <div class="title" style="text-align:center;background: linear-gradient(120deg, #e9f5ee 0%, #f7fff7 100%); border-radius: 18px; box-shadow: 0 2px 12px rgba(64,145,108,0.07); padding: 24px 0 18px 0; max-width: 700px; margin: 0 auto;">
-        <h1 style="font-family: '隶书', serif; font-size: 2em; color: #165DFF; margin: 0; font-weight:bold; letter-spacing:2px;">华中农业大学资源与环境学院环境生态课题组</h1>
-        <h2 style="font-size:1.08em;font-weight:normal;margin:10px 0 0 0; color:#36CFC9;">致力于生态过程与环境效应研究</h2>
+      <div class="title" style="position:relative;text-align:center;background: linear-gradient(120deg, #e9f5ee 0%, #f7fff7 100%); border-radius: 18px; box-shadow: 0 2px 12px rgba(64,145,108,0.07); padding: 24px 0 18px 0; max-width: 700px; margin: 0 auto; overflow:hidden;">
+        <img src="https://pic.huodongjia.com/event/2017-04-11/1491901211.36.jpg" alt="背景图" style="position:absolute;left:0;top:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:0.18;pointer-events:none;">
+        <div style="position:relative;z-index:1;">
+          <h1 style="font-family: '隶书', serif; font-size: 2em; color: #165DFF; margin: 0; font-weight:bold; letter-spacing:2px;">华中农业大学资源与环境学院环境生态课题组</h1>
+          <h2 style="font-size:1.08em;font-weight:normal;margin:10px 0 0 0; color:#36CFC9;">致力于生态过程与环境效应研究</h2>
+        </div>
       </div>
     </div>
   </header>
@@ -434,46 +533,6 @@
     <section class="intro-section module-block">
       <h2 class="module-title">课题组简介</h2>
       <p>华中农业大学资源与环境学院环境生态课题组由多位资深教授和副教授组成，致力于研究生态过程与环境效应。课题组现有博士研究生7人，硕士研究生35人。</p>
-    </section>
-
-    <section class="research-section module-block">
-      <h2 class="module-title">主要研究方向</h2>
-      <div class="research-area">
-        <h3>1. 农业生态系统碳、氮循环过程与环境效应</h3>
-        <ul>
-          <li>土壤碳、氮转化过程与环境效应</li>
-          <li>农田管理措施与农业面源污染防治</li>
-          <li>农业废弃物的生物处理与有效利用</li>
-          <li>土壤污染物迁移转化与有效控制</li>
-        </ul>
-      </div>
-      <div class="research-area">
-        <h3>2. 农业活动与大气污染的控制</h3>
-        <p>研究农业活动对大气污染的贡献及其控制措施</p>
-      </div>
-      <div class="research-area">
-        <h3>3. 全球变化及其植物的影响</h3>
-        <p>探讨全球气候变化对植物生长和生态系统的影响</p>
-      </div>
-    </section>
-
-    <section class="team-section module-block">
-      <h2 class="module-title">研究团队</h2>
-      <div class="team-members">
-        <div class="member"><h3>胡荣桂</h3><p>教授</p></div>
-        <div class="member"><h3>赵劲松</h3><p>副教授</p></div>
-        <div class="member"><h3>林杉</h3><p>副教授</p></div>
-        <div class="member"><h3>向荣彪</h3><p>副教授</p></div>
-      </div>
-      <div class="student-count">
-        <span>博士研究生：7人</span> | <span>硕士研究生：35人</span>
-      </div>
-    </section>
-
-    <section class="achievements-section module-block">
-      <h2 class="module-title">近期科研成果</h2>
-      <p>课题组在国际和国内学术期刊上发表了多篇高水平论文，涵盖了土壤碳氮循环、温室气体排放、水循环等多个研究领域。</p>
-      <p>近期在水稻土有机碳矿化机制方面取得了新的研究成果，相关成果发表在了《美国国家科学院院刊》(PNAS)上。</p>
     </section>
 
     <section class="contact-section module-block" id="contact-section">
