@@ -208,10 +208,10 @@
       margin-top: auto;
     }
 
-  .journals {
+.journals {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 10px;
+    grid-template-columns: repeat(5, 1fr); /* 每行显示5个卡片 */
+    gap: 20px;
     margin-top: 30px;
     padding: 20px;
     background-color: #fff;
@@ -239,7 +239,7 @@
 
 .journals img {
     width: 100%;
-    height: 100%;
+    height: 150px; /* 调整图片高度以适应卡片 */
     object-fit: cover;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
