@@ -210,7 +210,7 @@
 
 .journals {
     display: grid;
-    grid-template-columns: repeat(5, 1fr); /* 每行显示5个卡片 */
+    grid-template-columns: repeat(5, minmax(0, 1fr)); /* 每行显示5个卡片，允许卡片宽度自适应 */
     gap: 20px; /* 调整间距 */
     margin-top: 30px;
     padding: 20px;
@@ -228,6 +228,7 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: all 0.3s;
     border: 1px solid #e0e0e0;
+    /* 移除固定高度，让卡片高度自适应图片 */
 }
 
 .journals a:hover {
@@ -239,7 +240,7 @@
 .journals img {
     width: 100%;
     height: auto; /* 保持原始比例 */
-    object-fit: contain; /* 确保图片完全包含在卡片内 */
+    object-fit: cover; /* 确保图片覆盖整个卡片区域 */
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
 }
