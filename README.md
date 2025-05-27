@@ -5,7 +5,7 @@
 ## 网站网址
 
 正式访问地址：  
-[https://hsywww.github.io/huronggui-lab/](https://hsywww.github.io/huronggui-lab/)
+[https://D2RS-2025spring.github.io/huronggui-lab/](https://D2RS-2025spring.github.io/huronggui-lab/)
 
 ## 项目介绍
 
